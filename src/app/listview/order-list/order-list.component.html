@@ -1,0 +1,111 @@
+<app-header></app-header>
+<app-sidenav></app-sidenav>
+<div id="content" class="app-content" role="main">
+    <div class="app-content-body ">
+      <div class="bg-white b-b-none wrapper-md">
+        <div class="row">
+          <div class="col-sm-6 ">
+            <h4 class="m-n font-bold ">Order/PO List</h4>
+          </div>
+          <div class="col-sm-6 text-right poppins hidden-xs">
+            <a href="/order" class="btn m-b-xs btn-sm text-10 btn-info btn-3d add-role-model"><i
+              class="fa fa-plus"></i> Add Order/PO</a>
+          </div>
+        </div>
+      </div>
+
+
+  <table datatable class="table table-striped">
+  <thead>
+    <tr>
+      <th>PO Info</th>
+      <th>Customer Info</th>
+      <th>States</th>
+      <th>MLP</th>
+      <th>Non MLP</th>
+      <th>Rigid</th>
+      <th>Flexible</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pod of podata">
+      <td>
+        <span class="poIdClass"># {{ pod.PO_id }}</span>
+        <span class="poDateClass"><i class="fa fa-calendar"></i>{{ pod.created_at|date: 'dd-MM-yyyy' }}</span>
+      </td>
+      <td>
+        {{ 'Ashish' }}
+      </td>
+      <td>
+        <span class="badge badge-warning" *ngFor="let pomat of pod.materials" title="{{ pomat.material_name }}">{{ pomat.state }}</span>
+      </td>
+      <td class="rocket">
+        <span *ngFor="let rec of pod.record" >
+          <span style="font-weight: 800;font-size:18px;display:block;" *ngIf="rec.material=='MLP'" (click)="getAllotment(pod._id,'MLP',(rec.material=='MLP'?convertintonumber(rec.qty):''))">{{ rec.material=='MLP'?convertintonumber(rec.qty):'' }}<i class="fa fa-info-circle" style="font-weight: 100;color: #848282;font-size: 1rem;vertical-align: super;margin-left: .2rem;font-style: italic; "></i></span>
+          <span style="color:green" *ngIf="rec.material=='MLP'">{{ rec.material=='MLP'?(rec.achieved+' | '):'' }}</span>
+          <span style="color:maroon" *ngIf="rec.material=='MLP'">{{ (rec.material=='MLP'?((rec.qty)-(rec.achieved)):'') }}</span>
+          </span>
+      </td>
+      <td  class="rocket">
+        <span *ngFor="let rec of pod.record">
+          <span style="font-weight: 800;font-size:18px;display:block;" *ngIf="rec.material=='Non MLP'" (click)="getAllotment(pod._id,'Non MLP',(rec.material=='Non MLP'?convertintonumber(rec.qty):''))">{{ rec.material=='Non MLP'?convertintonumber(rec.qty):'' }}<i class="fa fa-info-circle" style="font-weight: 100;color: #848282;font-size: 1rem;vertical-align: super;margin-left: .2rem;font-style: italic; "></i></span>
+          <span style="color:green">{{ rec.material=='Non MLP'?(rec.achieved+' | '):'' }}</span>
+          <span style="color:maroon">{{ (rec.material=='Non MLP'?((rec.qty)-(rec.achieved)):'') }}</span>
+        </span>
+      </td>
+      <td  class="rocket">
+        <span *ngFor="let rec of pod.record">
+          <span style="font-weight: 800;font-size:18px;display:block;" *ngIf="rec.material=='Rigid'" (click)="getAllotment(pod._id,'Rigid',(rec.material=='Rigid'?convertintonumber(rec.qty):''))">{{ rec.material=='Rigid'?convertintonumber(rec.qty):'' }}<i class="fa fa-info-circle" style="font-weight: 100;color: #848282;font-size: 1rem;vertical-align: super;margin-left: .2rem;font-style: italic; "></i></span>
+          <span style="color:green">{{ rec.material=='Rigid'?(rec.achieved+' | '):'' }}</span>
+          <span style="color:maroon">{{ (rec.material=='Rigid'?((rec.qty)-(rec.achieved)):'') }}</span>
+        </span>
+      </td>
+      <td  class="rocket">
+        <span *ngFor="let rec of pod.record">
+          <span style="font-weight: 800;font-size:18px;display:block;" *ngIf="rec.material=='Flexible'" (click)="getAllotment(pod._id,'Flexible',(rec.material=='Flexible'?convertintonumber(rec.qty):''))">{{ rec.material=='Flexible'?convertintonumber(rec.qty):'' }}<i class="fa fa-info-circle"
+            style="font-weight: 100;color: #848282;font-size: 1rem;vertical-align: super;margin-left: .2rem;font-style: italic; "></i></span>
+          <span style="color:green">{{ rec.material=='Flexible'?(rec.achieved+' | '):'' }}</span>
+          <span style="color:maroon">{{ (rec.material=='Flexible'?((rec.qty)-(rec.achieved)):'') }}</span>
+        </span>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+
+
+</div></div>
+
+  <!-- Modal -->
+  <div #myModel class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document" style="width: 30%;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle" style="padding-top: 1%;color:black;">
+            Attached Document:</h5>
+
+        </div>
+        <form >
+          <div class="modal-body">
+
+
+            <div class="form-group">
+              <label for="exampleInputPassword1">Document No</label>
+              <input type="text" class="form-control" placeholder="Enter Document No" formControlName="document_no">
+
+            </div>
+
+          </div>
+          <div class="modal-footer">
+
+            <button type="cancel" class=" bt light upbt" data-dismiss="modal" #closebutton>Cancel</button>
+            <button type="submit" class=" bt danger upbt" >Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- mode end -->

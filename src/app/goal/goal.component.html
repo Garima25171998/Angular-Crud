@@ -1,0 +1,386 @@
+<app-header></app-header>
+<app-sidenav></app-sidenav>
+<div id="content" class="app-content" role="main">
+  <div class="app-content-body ">
+    <div class=" b-b-none wrapper-md main">
+      <div class="row">
+        <div class="col-sm-6 col-xs-12">
+          <h4 class="m-n font-bold ">Target Setting</h4>
+        </div>
+        <div class="col-sm-6 text-right poppins hidden-xs">
+          <!-- <button class="btn m-b-xs w-xs btn-sm text-10 btn-default btn-3d m-r-xs"><i class="icon-settings"></i> Action</button>
+              <button class="btn m-b-xs btn-sm text-10 btn-info btn-3d add-user-model"><i class="fa fa-plus"></i> Add User</button> -->
+          <button type="cancel" class=" bt light">Cancel</button>
+
+          <button type="submit" class=" bt danger ">Save</button>
+          <button type="submit" class=" bt dark ">Save & New</button>
+
+        </div>
+      </div>
+    </div>
+    <div class="wrapper-md" ng-controller="FormDemoCtrl">
+      <form role="form">
+
+
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="panel panel-default">
+
+
+              <div class="panel-body">
+                <div class="col-md-4 form-group">
+                  <label> From Date:</label>
+
+                  <input type="date" class="form-control" name="">
+                </div>
+
+
+                <div class="col-md-4 form-group">
+                  <label>To Date:</label>
+                  <input type="date" class="form-control" name="">
+                </div>
+
+
+                <div class="col-md-4 form-group">
+                  <label>State : </label>
+
+                  <select class="form-control">
+                    <option></option>
+                  </select>
+                </div>
+
+
+              </div>
+
+              <div class="panel-body">
+
+
+
+
+
+
+
+                <div class="col-md-4 boxData">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title"> <span class="loginBtn1">MLP</span><span class="loginBtn"> <b
+                            style="font-size: 23px;">800</b>kg<p>Balance</p></span></h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item bgcl1"><i class="fa fa-star"></i> New Order <span>1000kg</span></li>
+                      <li class="list-group-item"><i class="fa fa-bars"></i> Old order <span>500kg</span></li>
+                      <li class="list-group-item bgcl2"><i class="fa fa-close"></i> Collected & Disposed
+                        <span>700kg</span></li>
+                      <li class="list-group-item"><i class="fa fa-th-large"></i> Allotted/Un-Allotted
+                        <span>500/200kg</span></li>
+                    </ul>
+                  </div>
+                </div>
+
+
+
+                <div class="col-md-4 boxData">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title"> <span class="loginBtn1">NON-MLP</span><span class="loginBtn"> <b
+                            style="font-size: 23px;">800</b>kg<p>Balance</p></span></h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item bgcl1"><i class="fa fa-star"></i> New Order <span>1000kg</span></li>
+                      <li class="list-group-item"><i class="fa fa-bars"></i> Old order <span>500kg</span></li>
+                      <li class="list-group-item bgcl2"><i class="fa fa-close"></i> Collected & Disposed
+                        <span>700kg</span></li>
+                      <li class="list-group-item"><i class="fa fa-th-large"></i> Allotted/Un-Allotted
+                        <span>500/200kg</span></li>
+                    </ul>
+                  </div>
+                </div>
+
+
+
+                <div class="col-md-4 boxData">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title"> <span class="loginBtn1">FLEXIBLE</span><span class="loginBtn"> <b
+                            style="font-size: 23px;">800</b>kg<p>Balance</p></span></h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item bgcl1"><i class="fa fa-star"></i> New Order <span>1000kg</span></li>
+                      <li class="list-group-item"><i class="fa fa-bars"></i> Old order <span>500kg</span></li>
+                      <li class="list-group-item bgcl2"><i class="fa fa-close"></i> Collected & Disposed
+                        <span>700kg</span></li>
+                      <li class="list-group-item"><i class="fa fa-th-large"></i> Allotted/Un-Allotted
+                        <span>500/200kg</span></li>
+                    </ul>
+                  </div>
+                </div>
+
+
+                <!-- <div class="col-md-4 boxData">
+            <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title"> <span class="loginBtn1" >RIGID</span><span class="loginBtn" > <b style="font-size: 23px;">800</b>kg<p>Balance</p></span></h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item bgcl1"><i class="fa fa-star"></i> New Order <span>1000kg</span></li>
+                  <li class="list-group-item"><i class="fa fa-bars"></i> Old order <span>500kg</span></li>
+                  <li class="list-group-item bgcl2"><i class="fa fa-close"></i> Collected & Disposed <span>700kg</span></li>
+                  <li class="list-group-item"><i class="fa fa-th-large"></i> Allotted/Un-Allotted <span>500/200kg</span></li>
+                </ul>
+              </div>
+        </div>  -->
+
+
+
+
+
+              </div>
+
+
+
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="panel panel-default">
+              <div class="panel-heading font-bold">Target Source </div>
+              <div class="panel-body">
+                <div class="col-md-6 form-group">
+                  <label> Target ID</label>
+                  <input type="text" class="form-control" name="">
+                </div>
+                <div class="col-md-6 form-group">
+                  <label>Target Owner </label>
+                  <select class="form-control">
+                    <option></option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-------end content1-->
+        <!-------start content2-->
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="panel panel-default">
+              <!-- <div class="panel-heading font-bold">Target Information </div> -->
+              <div class="panel-body">
+                <div class="col-md-12" style="padding: 0px;margin:0px;">
+                  <div class="col-md-10 ">
+                    <b class="upper-heding">Target Information</b>
+                  </div>
+                  <div style="text-align: right;padding-right:18px; ">
+                    <b style="cursor: pointer;">
+
+                      <!-- <button><i class="fa fa-plus" aria-hidden="true" (click)="addinfo($event)"></i></button> -->
+                      <button type="submit" class=" bt dark1 " (click)="addinfo($event)" style="cursor: pointer;">Add
+                      </button>
+                    </b>
+
+
+
+                  </div>
+                </div>
+                <div class="col-md-12" style="padding:0px; margin-top:1.5%">
+                  <div class="row">
+                    <div class="col-md-12 " style="padding:0px;overflow-x: scroll;">
+                      <table class="table tbl">
+                        <thead>
+                          <tr style="background:#E4F6EA; ">
+                            <th>Material Name</th>
+                            <th>State</th>
+                            <th>City</th>
+                            <th>ULB</th>
+
+                            <th>Collection Center</th>
+                            <th>Disposal</th>
+                            <th>Collection Target Qty (Kg)</th>
+                            <th>Target Date</th>
+                            <th>Action</th>
+
+                          </tr>
+                          <tr *ngFor="let row of targetInfo;index as i">
+                            <th>
+                              <select class="tbl-input form-control">
+                                <option></option>
+                              </select>
+                            </th>
+                            <th>
+                              <!-- <select class="tbl-input form-control">
+                              <option></option>
+                            </select> -->
+                            </th>
+
+                            <th>
+                              <select class="tbl-input form-control">
+                                <option></option>
+                              </select>
+                            </th>
+
+                            <th>
+                              <select class="tbl-input form-control">
+                                <option></option>
+                              </select>
+                            </th>
+
+
+                            <th><input type="input" (blur)="valueInsert($event,i,'collection_center')"
+                                class="tbl-input form-control"></th>
+                            <th><input type="input" class="tbl-input form-control"></th>
+                            <th><input type="input" class="tbl-input form-control"></th>
+                            <th><input type="date" class="tbl-input form-control" style="width:150px"></th>
+                            <th style="font-size: 14.4px;"><i class="fa fa-pencil-square-o  " aria-hidden="true"></i>
+                              <i class="fa fa-trash" aria-hidden="true" (click)="deleteinfo($event,i)"></i>
+                              <i class="fa fa-plus" aria-hidden="true" (click)="addinfo($event)"></i>
+                            </th>
+
+
+                          </tr>
+                        </thead>
+                      </table>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-------end content2-->
+        <!-------start content4-->
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="panel panel-default">
+
+              <div class="panel-body">
+                <div class="col-md-12" style="padding: 0px;margin:0px;">
+                  <!-- <div class="col-md-10 ">
+                    <b class="upper-heding"> Attachment</b>
+                  </div>
+                  <div style="text-align: right;padding-right:18px;">
+
+                    <b data-toggle="modal" data-target="#exampleModalCenter" style="cursor: pointer;"
+                      class="upper-heding"> Attach <i class="fa fa-paperclip upper-heding" aria-hidden="true"></i></b>
+                  </div>
+                  -->
+                  <div class="row">
+                    <div class="col-sm-6 col-xs-12">
+                      <b class="upper-heding"> Attachment</b>
+                    </div>
+                    <div class="col-sm-6 text-right poppins hidden-xs">
+
+                      <b data-toggle="modal" data-target="#exampleModalCenter" style="cursor: pointer;"
+                        class="upper-heding"> Attach <i class="fa fa-paperclip upper-heding" aria-hidden="true"></i></b>
+
+                    </div>
+                  </div>
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document" style="width: 30%;">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLongTitle" style="padding-top: 1%;color:black;">
+                            Attached Document:</h5>
+
+                        </div>
+                        <div class="modal-body">
+
+                          <form>
+                            <div class="form-group">
+                              <label for="exampleInputEmail1">Document Type</label>
+
+                              <select class="form-control" formControlName="document_type">
+                                <option>PO</option>
+                                <option>Agreement</option>
+                                <option>MOU</option>
+                                <option>Work Order</option>
+                                <option>CTO</option>
+                              </select>
+
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleInputPassword1">Document No</label>
+                              <input type="text" class="form-control" formControlName="document_no">
+                            </div>
+
+                            <div class="form-group">
+                              <label for="exampleInputPassword1">File Name</label>
+                              <input type="file" class="form-control" formControlName="file">
+                            </div>
+
+                            <div class="form-group">
+                              <label for="exampleInputPassword1">Validity</label>
+                              <input type="date" class="form-control" formControlName="validity">
+                            </div>
+                          </form>
+
+                        </div>
+                        <div class="modal-footer">
+
+                          <button type="cancel" class=" bt light upbt" data-dismiss="modal">Cancel</button>
+                          <button type="submit" class=" bt danger upbt">Save</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- mode end -->
+
+                </div>
+                <br>
+                <br>
+                <div class="row">
+                  <div class="col-md-12" style="padding:0px;">
+                    <table class="table">
+                      <thead>
+                        <tr style="background:#E4F6EA; ">
+                          <th>Document Type</th>
+                          <th>Document No</th>
+                          <th>File Name (File Size)</th>
+                          <th>Validity</th>
+                          <th>Uploaded by (Date &amp;Time)</th>
+                          <th>Action</th>
+
+                        </tr>
+                        <tr>
+                          <th></th>
+                          <th> </th>
+                          <th></th>
+                          <th></th>
+                          <th></th>
+                          <th><i class="fa fa-pencil-square-o " aria-hidden="true"></i>
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                          </th>
+                        </tr>
+                      </thead>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-------end content4-->
+
+      </form>
+
+      <div style="text-align: right; margin:10px 0px;">
+        <button type="cancel" class=" bt light">Cancel</button>
+        <button type="Save" class=" bt danger">Save</button>
+        <button type="submit" class=" bt dark">Save & New</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      $('.bxslider').bxSlider();
+    });
+
+  </script>

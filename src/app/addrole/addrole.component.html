@@ -1,0 +1,797 @@
+<app-header></app-header>
+<app-sidenav></app-sidenav>
+<div id="content" class="app-content" role="main">
+  <div class="app-content-body ">
+    <div class="bg-white b-b-none wrapper-md">
+      <div class="row">
+        <div class="col-sm-6 col-xs-12">
+          <h4 class="font-bold ">Add User's Role</h4>
+        </div>
+        <div class="col-sm-6 text-right poppins hidden-xs">
+          <a class="btn m-b-xs w-xs btn-sm text-10 btn-info btn-3d -staff" routerLink="/role"><i class="fa fa-undo"></i>
+            Back</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-sm-12" style="margin:0px;padding: 0px;">
+
+    <div class="wrapper-md">
+      <div class="panel b-a">
+        <div class="panel-body">
+          <form role="form" method="post" action="/add-role">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="control-label font-weight-600">Role Name</label>
+                  <input type="text" class="form-control validate" formControlName="role_name">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="control-label font-weight-600">Role Description</label>
+                  <input type="text" class="form-control validate" formControlName="description">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-7">
+                <div class="table-responsive">
+                  <table class="table table-bordered table-hover table-striped">
+                    <thead>
+                      <!-- <tr>
+                                        <th colspan="6" class="text-center">Group Permissions<label class="i-checks i-checks"> Select All&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <input type="checkbox"  data-md-icheck (change)="toggleallVisibility($event)">
+                                            <i></i>
+                                        </label></th>
+                                    </tr> -->
+                      <tr>
+                        <th class="text-center">Module</th>
+                        <!-- <th class="text-center ">Full Access</th> -->
+                        <th class="text-center">View</th>
+                        <th class="text-center">Create</th>
+                        <th class="text-center">Edit</th>
+                        <th class="text-center">Delete</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="font-bold">Customer</td>
+                        <!-- <td class="text-center">
+                                            <div class="checkbox g-my-0">
+                                                <label class="i-checks i-checks">
+                                                    <input type="checkbox" [checked]="customerbox==true"  data-md-icheck (change)="toggleCustomerVisibility($event)">
+                                                    <i></i>
+                                                </label>
+                                            </div>
+                                        </td> -->
+                        <td class="text-center">
+                          <div class="checkbox g-my-0">
+                            <label class="i-checks i-checks">
+                              <input type="checkbox" [checked]="customerbox==true" formControlName="customerview">
+                              <i></i>
+                            </label>
+                          </div>
+                        </td>
+                        <td class="text-center">
+                          <div class="checkbox g-my-0">
+                            <label class="i-checks i-checks">
+                              <input type="checkbox" [checked]="customerbox==true" formControlName="customercreate">
+                              <i></i>
+                            </label>
+                          </div>
+                        </td>
+                        <td class="text-center">
+                          <div class="checkbox g-my-0">
+                            <label class="i-checks i-checks">
+                              <input type="checkbox" [checked]="customerbox==true" formControlName="customeredit">
+                              <i></i>
+                            </label>
+                          </div>
+                        </td>
+                        <td class="text-center">
+                          <div class="checkbox g-my-0">
+                            <label class="i-checks i-checks">
+                              <input type="checkbox" [checked]="customerbox==true" formControlName="customerdelete">
+                              <i></i>
+                            </label>
+                          </div>
+                        </td>
+                      </tr>
+
+
+                      <tr>
+                        <td class="font-bold">ULB</td>
+                        <!-- <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks i-checks">
+                                                        <input type="checkbox" [checked]="ulbCheckbox==true"  data-md-icheck (change)="toggleUlbVisibility($event)">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td> -->
+                        <td class="text-center">
+                          <div class="checkbox g-my-0">
+                            <label class="i-checks i-checks">
+                              <input type="checkbox" [checked]="ulbCheckbox==true" formControlName="ulbview">
+                              <i></i>
+                            </label>
+                          </div>
+                        </td>
+                        <td class="text-center">
+                          <div class="checkbox g-my-0">
+                            <label class="i-checks i-checks">
+                              <input type="checkbox" [checked]="ulbCheckbox==true" formControlName="ulbcreate">
+                              <i></i>
+                            </label>
+                          </div>
+                        </td>
+                        <td class="text-center">
+                          <div class="checkbox g-my-0">
+                            <label class="i-checks i-checks">
+                              <input type="checkbox" [checked]="ulbCheckbox==true" formControlName="ulbedit">
+                              <i></i>
+                            </label>
+                          </div>
+                        </td>
+                        <td class="text-center">
+                          <div class="checkbox g-my-0">
+                            <label class="i-checks i-checks">
+                              <input type="checkbox" [checked]="ulbCheckbox==true" formControlName="ulbdelete">
+                              <i></i>
+                            </label>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="font-bold">Collection Centers</td>
+                        <!-- <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks i-checks">
+                                                        <input type="checkbox" [checked]="collectionCheckbox==true"  data-md-icheck (change)="togglecollectionVisibilty($event)">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td> -->
+                        <td class="text-center">
+                          <div class="checkbox g-my-0">
+                            <label class="i-checks i-checks">
+                              <input type="checkbox" [checked]="collectionCheckbox==true"
+                                formControlName="collectioncenterview">
+                              <i></i>
+                            </label>
+                          </div>
+                        </td>
+                        <td class="text-center">
+                          <div class="checkbox g-my-0">
+                            <label class="i-checks i-checks">
+                              <input type="checkbox" [checked]="collectionCheckbox==true"
+                                formControlName="collectioncentercreate">
+                              <i></i>
+                            </label>
+                          </div>
+                        </td>
+                        <td class="text-center">
+                          <div class="checkbox g-my-0">
+                            <label class="i-checks i-checks">
+                              <input type="checkbox" [checked]="collectionCheckbox==true"
+                                formControlName="collectioncenteredit">
+                              <i></i>
+                            </label>
+                          </div>
+                        </td>
+                        <td class="text-center">
+                          <div class="checkbox g-my-0">
+                            <label class="i-checks i-checks">
+                              <input type="checkbox" [checked]="collectionCheckbox==true"
+                                formControlName="collectioncenterdelete">
+                              <i></i>
+                            </label>
+                          </div>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td class="font-bold">Transporter</td>
+                        <!-- <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks i-checks">
+                                                        <input type="checkbox" [checked]="transporterCheckbox==true"  data-md-icheck (change)="toggleTransporterVisibilty($event)">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td> -->
+                        <td class="text-center">
+                          <div class="checkbox g-my-0">
+                            <label class="i-checks i-checks">
+                              <input type="checkbox" [checked]="transporterCheckbox==true"
+                                formControlName="transporterview">
+                              <i></i>
+                            </label>
+                          </div>
+                        </td>
+                        <td class="text-center">
+                          <div class="checkbox g-my-0">
+                            <label class="i-checks i-checks">
+                              <input type="checkbox" [checked]="transporterCheckbox==true"
+                                formControlName="transportercreate">
+                              <i></i>
+                            </label>
+                          </div>
+                        </td>
+                        <td class="text-center">
+                          <div class="checkbox g-my-0">
+                            <label class="i-checks i-checks">
+                              <input type="checkbox" [checked]="transporterCheckbox==true"
+                                formControlName="transporteredit">
+                              <i></i>
+                            </label>
+                          </div>
+                        </td>
+                        <td class="text-center">
+                          <div class="checkbox g-my-0">
+                            <label class="i-checks i-checks">
+                              <input type="checkbox" [checked]="transporterCheckbox==true"
+                                formControlName="transporterdelete">
+                              <i></i>
+                            </label>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="font-bold">Disposal Facility/PWPF</td>
+                        <!-- <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks i-checks">
+                                                        <input type="checkbox" [checked]="disposalCheckbox==true"  data-md-icheck (change)="toogleDisposalVisibilty($event)">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td> -->
+                        <td class="text-center">
+                          <div class="checkbox g-my-0">
+                            <label class="i-checks i-checks">
+                              <input type="checkbox" [checked]="disposalCheckbox==true" formControlName="disposalview">
+                              <i></i>
+                            </label>
+                          </div>
+                        </td>
+                        <td class="text-center">
+                          <div class="checkbox g-my-0">
+                            <label class="i-checks i-checks">
+                              <input type="checkbox" [checked]="disposalCheckbox==true"
+                                formControlName="disposalcreate">
+                              <i></i>
+                            </label>
+                          </div>
+                        </td>
+                        <td class="text-center">
+                          <div class="checkbox g-my-0">
+                            <label class="i-checks i-checks">
+                              <input type="checkbox" [checked]="disposalCheckbox==true" formControlName="disposaledit">
+                              <i></i>
+                            </label>
+                          </div>
+                        </td>
+                        <td class="text-center">
+                          <div class="checkbox g-my-0">
+                            <label class="i-checks i-checks">
+                              <input type="checkbox" [checked]="disposalCheckbox==true"
+                                formControlName="disposaldelete">
+                              <i></i>
+                            </label>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="font-bold">Users</td>
+                        <!-- <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks i-checks">
+                                                        <input type="checkbox" [checked]="userCheckbox==true"  data-md-icheck (change)="toogleUserVisibilty($event)">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td> -->
+                        <td class="text-center">
+                          <div class="checkbox g-my-0">
+                            <label class="i-checks i-checks">
+                              <input type="checkbox" [checked]="userCheckbox==true" formControlName="userview">
+                              <i></i>
+                            </label>
+                          </div>
+                        </td>
+                        <td class="text-center">
+                          <div class="checkbox g-my-0">
+                            <label class="i-checks i-checks">
+                              <input type="checkbox" [checked]="userCheckbox==true" formControlName="usercreate">
+                              <i></i>
+                            </label>
+                          </div>
+                        </td>
+                        <td class="text-center">
+                          <div class="checkbox g-my-0">
+                            <label class="i-checks i-checks">
+                              <input type="checkbox" [checked]="userCheckbox==true" formControlName="useredit">
+                              <i></i>
+                            </label>
+                          </div>
+                        </td>
+                        <td class="text-center">
+                          <div class="checkbox g-my-0">
+                            <label class="i-checks i-checks">
+                              <input type="checkbox" [checked]="userCheckbox==true" formControlName="userdelete">
+                              <i></i>
+                            </label>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="font-bold">Role And Permission</td>
+                        <!-- <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks i-checks">
+                                                        <input type="checkbox" [checked]="roleCheckbox==true"  data-md-icheck (change)="toogleRoleVisibilty($event)">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td> -->
+                        <td class="text-center">
+                          <div class="checkbox g-my-0">
+                            <label class="i-checks i-checks">
+                              <input type="checkbox" [checked]="roleCheckbox==true" formControlName="roleview">
+                              <i></i>
+                            </label>
+                          </div>
+                        </td>
+                        <td class="text-center">
+                          <div class="checkbox g-my-0">
+                            <label class="i-checks i-checks">
+                              <input type="checkbox" [checked]="roleCheckbox==true" formControlName="rolecreate">
+                              <i></i>
+                            </label>
+                          </div>
+                        </td>
+                        <td class="text-center">
+                          <div class="checkbox g-my-0">
+                            <label class="i-checks i-checks">
+                              <input type="checkbox" [checked]="roleCheckbox==true" formControlName="roleedit">
+                              <i></i>
+                            </label>
+                          </div>
+                        </td>
+                        <td class="text-center">
+                          <div class="checkbox g-my-0">
+                            <label class="i-checks i-checks">
+                              <input type="checkbox" [checked]="roleCheckbox==true" formControlName="roledelete">
+                              <i></i>
+                            </label>
+                          </div>
+                        </td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="table-responsive">
+                  <table class="table table-bordered table-hover table-striped">
+                    <thead>
+                      <tr>
+                        <!-- <th colspan="2" class="text-center">&nbsp;&nbsp;User Permissions
+                                                <label class="i-checks i-checks"> Select All&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <input type="checkbox" [checked]="PermissionsCheckbox==true"  data-md-icheck (change)="togglePermissionsVisibility($event)">
+                                                <i></i>
+                                            </label>
+                                        </th> -->
+                      </tr>
+                      <tr>
+                        <th class="text-center">Name</th>
+                        <th class="text-center ">Access</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="font-bold">Order/PO</td>
+                        <td class="text-center">
+                          <div class="checkbox g-my-0">
+                            <label class="i-checks">
+                              <input type="checkbox" [checked]="PermissionsCheckbox==true" formControlName="order_op">
+                              <i></i>
+                            </label>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="font-bold">Target Setting</td>
+                        <td class="text-center">
+                          <div class="checkbox g-my-0">
+                            <label class="i-checks">
+                              <input type="checkbox" [checked]="PermissionsCheckbox==true" formControlName="target">
+                              <i></i>
+                            </label>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="font-bold">Collection & Disposal Execution</td>
+                        <td class="text-center">
+                          <div class="checkbox g-my-0">
+                            <label class="i-checks">
+                              <input type="checkbox" [checked]="PermissionsCheckbox==true"
+                                formControlName="collection_disposal_execution">
+                              <i></i>
+                            </label>
+                          </div>
+                        </td>
+                      </tr>
+                      <!-- <tr>
+                                            <td class="font-bold">Is Mapping </td>
+                                            <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks">
+                                                        <input type="checkbox" value="1" name="mapping_index">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr> -->
+
+                    </tbody>
+                  </table>
+                </div>
+                <!-- <div class="table-responsive">
+                                <table class="table table-bordered table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="2" class="text-center">Booking Permissions<label class="i-checks i-checks"> Select All&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <input type="checkbox" value="1" name="" class="select-all-checkbox">
+                                                <i></i>
+                                            </label></th>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-center">Name</th>
+                                            <th class="text-center ">Access</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                         <tr>
+                                            <td class="font-bold">Booking Status</td>
+                                            <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks">
+                                                        <input type="checkbox" value="1" name="booking_status_index">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                         <tr>
+                                            <td class="font-bold">Booking View </td>
+                                            <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks">
+                                                        <input type="checkbox" value="1" name="booking_view_index">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div> -->
+              </div>
+              <div class="col-md-3">
+                <!-- <div class="table-responsive">
+                                <table class="table table-bordered table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="2" class="text-center">Fuel Slip Permissions<label class="i-checks i-checks"> Select All&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <input type="checkbox" value="1" name="" class="select-all-checkbox">
+                                                <i></i>
+                                            </label></th>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-center">Name</th>
+                                            <th class="text-center ">Access</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="font-bold">View Fuel Slip</td>
+                                            <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks i-checks">
+                                                        <input type="checkbox" value="1" name="fuelslip_index">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-bold">Generate Fuel Slip</td>
+                                            <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks i-checks">
+                                                        <input type="checkbox" value="1" name="fuelslip_create">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-bold">Cancel Fuel Slip</td>
+                                            <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks i-checks">
+                                                        <input type="checkbox" value="1" name="fuelslip_delete">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-bold">PDI</td>
+                                            <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks">
+                                                        <input type="checkbox" value="1" name="pdi">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-bold">Demo</td>
+                                            <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks">
+                                                        <input type="checkbox" value="1" name="demo">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-bold">Workshop</td>
+                                            <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks">
+                                                        <input type="checkbox" value="1" name="workshop">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-bold">Bodyshop</td>
+                                            <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks">
+                                                        <input type="checkbox" value="1" name="bodyshop">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-bold">General</td>
+                                            <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks">
+                                                        <input type="checkbox" value="1" name="general">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-bold">True Value</td>
+                                            <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks">
+                                                        <input type="checkbox" value="1" name="true_value">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-bold">Genset</td>
+                                            <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks">
+                                                        <input type="checkbox" value="1" name="genset">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-bold">MMS</td>
+                                            <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks">
+                                                        <input type="checkbox" value="1" name="mms">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-bold">MDS</td>
+                                            <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks">
+                                                        <input type="checkbox" value="1" name="mds">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-bold">Test Drive</td>
+                                            <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks">
+                                                        <input type="checkbox" value="1" name="test_drive">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div> -->
+                <!-- <div class="table-responsive">
+                                <table class="table table-bordered table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="2" class="text-center">Quotation Permissions<label class="i-checks i-checks"> Select All&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <input type="checkbox" value="1" name="" class="select-all-checkbox">
+                                                <i></i>
+                                            </label></th>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-center">Name</th>
+                                            <th class="text-center ">Access</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="font-bold">Quotation View </td>
+                                            <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks i-checks">
+                                                        <input type="checkbox" value="1" name="quot_view_index">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-bold">Add Discount</td>
+                                            <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks i-checks">
+                                                        <input type="checkbox" value="1" name="quot_add_discount_index">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="font-bold">Discount Approval</td>
+                                            <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks">
+                                                        <input type="checkbox" value="1" name="quot_discount_approval_index">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                         <tr>
+                                            <td class="font-bold">Status</td>
+                                            <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks">
+                                                        <input type="checkbox" value="1" name="quot_status_index">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                         <tr>
+                                            <td class="font-bold">Retail</td>
+                                            <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks">
+                                                        <input type="checkbox" value="1" name="quot_booking_index">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table table-bordered table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="2" class="text-center">Retail Permissions<label class="i-checks i-checks"> Select All&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <input type="checkbox" value="1" name="" class="select-all-checkbox">
+                                                <i></i>
+                                            </label></th>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-center">Name</th>
+                                            <th class="text-center ">Access</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                         <tr>
+                                            <td class="font-bold">Retail Request</td>
+                                            <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks">
+                                                        <input type="checkbox" value="1" name="retail_request_index">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                         <tr>
+                                            <td class="font-bold">Chassis No. Allotment </td>
+                                            <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks">
+                                                        <input type="checkbox" value="1" name="chassisno_allotment_index">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-bold">Document Uploading </td>
+                                            <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks">
+                                                        <input type="checkbox" value="1" name="document_uploading_index">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div> -->
+
+
+
+              </div>
+            </div>
+
+
+
+            <div class="row m-t-md">
+              <div class="col-md-12">
+                <button class="btn m-b-xs w-xs btn-sm btn-3d btn-success add-submit" type="submit"> Save</button>
+                <a class="btn m-b-xs w-xs btn-sm btn-3d btn-default" href="/roles">Cancel</a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+</div>

@@ -1,0 +1,135 @@
+<app-header></app-header>
+<app-sidenav></app-sidenav>
+<div id="content" class="app-content" role="main">
+  <div class="app-content-body ">
+
+    <div class="bg-white b-b-none wrapper-md">
+      <div class="row">
+        <div class="col-sm-6 col-xs-12">
+          <h4 class="m-n font-bold ">Users</h4>
+        </div>
+        <div class="col-sm-6 text-right  hidden-xs">
+
+          <button class="btn m-b-xs btn-sm text-10 btn-info btn-3d add-user-model" data-toggle="modal"
+          data-target="#exampleModalCenter" style="cursor: pointer;"><i class="fa fa-plus"></i> Add User</button>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="wrapper-md" ng-controller="FormDemoCtr5">
+
+
+
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close  m-t-xs" data-dismiss="modal"><span>⤬</span></button>
+              <span class="modal-title  font-weight-600 text-20">Add User</span>
+            </div>
+            <div class="modal-body">
+              <div class="details">
+                <form>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="control-label font-weight-600">Name</label>
+                        <input type="text" class="form-control  input-sm" placeholder="Name">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="control-label font-weight-600">Email</label>
+                        <input type="email" class="form-control  input-sm" name="email" placeholder="Email">
+                        <div class="error_email"></div>
+                      </div>
+                    </div>
+
+                    
+                  </div>
+                  <div class="row">
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="control-label font-weight-600">Phone</label>
+                        <input type="text" class="form-control  input-sm" placeholder="Phone">
+                        <div class="error_mob"></div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="control-label font-weight-600">Designation</label>
+                        <input type="text" class="form-control  input-sm" placeholder="Designation">
+                        <div class="error_mob"></div>
+                      </div>
+                    </div>
+
+                  
+                  </div>
+                  <div class="row">
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="control-label font-weight-600">Password</label>
+                        <input type="text" class="form-control  input-sm" placeholder="Password">
+                        <div class="error_mob"></div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="control-label font-weight-600">Confirm
+                         Password</label>
+                        <input type="text" class="form-control  input-sm" placeholder="Confirm Password">
+                        <div class="error_mob"></div>
+                      </div>
+                    </div>
+
+                   
+                   
+                  </div>
+
+
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="control-label font-weight-600">Role</label>
+                        <select class="form-control validation user_role input-sm" name="role">
+                          <option value="">Choose Role</option>
+                          <option></option>
+                        </select>
+                      </div>
+                    </div>
+                   
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label class="control-label font-weight-600">&nbsp;</label>
+                      <div class="form-group">
+                        
+                          <button type="button" class="btn btn-sm btn-3d btn-rounded m-b-xs w-xs btn-success"  style="margin-right:1.5%">Save</button>
+                        <button class="btn btn-sm btn-3d btn-rounded m-b-xs w-xs btn-danger"
+                          type="button">Cancel</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- mode end -->
+
+
+    </div>
+  </div>

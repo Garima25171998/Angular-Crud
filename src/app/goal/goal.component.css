@@ -1,0 +1,25 @@
+.tooltipctn {
+    position: relative;
+    display: inline-block;
+  
+  }
+  
+  .tooltipctn .tooltiptextctn {
+    visibility: hidden;
+    width: 80px;
+    background-color:#E4F6EA;
+   
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 105%;
+  }
+  
+  .tooltipctn:hover .tooltiptextctn {
+    visibility: visible;
+  }

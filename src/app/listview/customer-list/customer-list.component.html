@@ -1,0 +1,94 @@
+<app-header></app-header>
+<app-sidenav></app-sidenav>
+<div id="content" class="app-content" role="main">
+  <div class="app-content-body ">
+    <div class="bg-white b-b-none wrapper-md main">
+      <div class="row">
+        <div class="col-sm-6 col-xs-6">
+          <h4 class="m-n font-bold text-dark ">Customer List</h4>
+        </div>
+        <div class="col-sm-6 text-right poppins hidden-xs">
+          <!-- <a href="/customer" class="btn m-b-xs btn-sm text-10 btn-info btn-3d add-role-model"><i
+              class="fa fa-plus"></i> Add Customer</a> -->
+              <button type="button" class="button"><i
+                class="fa fa-plus"></i> <a routerLink="/customer">Add Customer</a></button>
+        </div>
+      </div>
+    </div>
+<kendo-grid [kendoGridBinding]="gridView" kendoGridSelectBy="id" [selectedKeys]="mySelection" [pageSize]="20"
+  [pageable]="true" [sortable]="true" [reorderable]="true" [resizable]="true" [height]="500"
+  [columnMenu]="{ filter: true }">
+  <ng-template kendoGridToolbarTemplate>
+    <input placeholder="Search in all columns..." kendoTextBox (input)="onFilter($event)" />
+    <kendo-grid-spacer></kendo-grid-spacer>
+  </ng-template>
+  <!-- <kendo-grid-checkbox-column
+     [width]="45"
+     [headerClass]="{ 'text-center': true }"
+     [class]="{ 'text-center': true }"
+     [resizable]="false"
+     [columnMenu]="false"
+     [showSelectAll]="true"
+   ></kendo-grid-checkbox-column> -->
+
+
+   
+
+  <kendo-grid-column field="customer_id" title="ID" [width]="100">
+
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <div class="customer-name text-theme"># {{ dataItem.customer_id }}</div>
+      <div class="industry_type">Industry  : {{ dataItem.industry_type }}</div>
+      <div class="organization_name">Organization  :{{ dataItem.organization_name }}</div>
+    </ng-template>
+  </kendo-grid-column>
+
+  <kendo-grid-column field="contact" title="Contact" [width]="100">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <div class="first_name"><i class="fa fa-user"></i> {{ dataItem.first_name + " "+ dataItem.last_name }}</div>
+      <div class="mobile"><i class="fa fa-phone"></i> {{ dataItem.mobile }}</div>
+      <div class="email"><i class="fa fa-envelope"></i>  {{ dataItem.email }}</div>
+
+    </ng-template>
+  </kendo-grid-column>
+ 
+  <kendo-grid-column  title="Registration" [width]="100">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <div class="cpcb_registration ">CPCB : {{ dataItem.cpcb_registration}}</div>
+      <div class="cpcb_validity"><i _ngcontent-fcn-c561="" aria-hidden="true" class="fa fa-calendar-check-o" style="color: green;"></i>CPCB Validity : {{ dataItem.cpcb_validity |date:'dd-MM-yyyy'}}</div>
+     
+      <div class="spcb_registration ">SPCB : {{ dataItem.spcb_registration}}</div>
+      <div class="spcb_validity"><i _ngcontent-fcn-c561="" aria-hidden="true" class="fa fa-calendar-check-o" style="color: green;"></i>SPCB Validity : {{ dataItem.spcb_validity |date:'dd-MM-yyyy' }}</div>
+    </ng-template>
+  </kendo-grid-column>
+  
+
+  
+  <kendo-grid-column title="Action" [width]="100" [class]="{ 'text-center': true }" [resizable]="false"
+    [filterable]="false">
+    <ng-template kendoGridCellTemplate let-customer>
+      <kendo-menu>
+        <kendo-menu-item  icon="gear" >
+          <kendo-menu-item text="Edit" url="/edit-customer/{{ customer._id }}" icon="edit"> </kendo-menu-item>
+          <kendo-menu-item text="Delete" url="/delete-customer/{{ customer._id }}" icon="delete"> </kendo-menu-item>
+        </kendo-menu-item>
+      </kendo-menu>
+
+    </ng-template>
+  </kendo-grid-column>
+
+
+
+
+
+ 
+
+
+
+
+
+</kendo-grid>
+
+
+</div>
+</div>

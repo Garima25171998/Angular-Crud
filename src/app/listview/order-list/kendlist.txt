@@ -1,0 +1,79 @@
+<!-- <kendo-grid
+[kendoGridBinding]="gridView"
+kendoGridSelectBy="id"
+[selectedKeys]="mySelection"
+[pageSize]="20"
+[pageable]="true"
+[sortable]="true"
+[reorderable]="true"
+[resizable]="true"
+[height]="500"
+[columnMenu]="{ filter: true }">
+<ng-template kendoGridToolbarTemplate>
+  <input
+    placeholder="Search in all columns..."
+    kendoTextBox
+    (input)="onFilter($event)"
+    />
+<kendo-grid-spacer></kendo-grid-spacer>
+
+</ng-template>
+
+
+  <kendo-grid-column field="Customer Order/PO ID" title="Customer Order/PO ID" [width]="100">
+    <ng-template kendoGridCellTemplate let-dataItem>
+
+      <div class="customer-name"># {{dataItem.PO_id}}</div>
+
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field="materials" title="state" [width]="200" >
+    <ng-template kendoGridCellTemplate let-dataItem >
+        <table class="table table-striped">
+          <tr>
+            <th>Material</th>
+            <th>Qty.</th>
+            <th>Achieved Qty.</th>
+            <th>Balance</th>
+            <th>Action</th>
+          </tr>
+          <tr *ngFor="let item of dataItem.record">
+            <td style="width:85px;">  {{ item.material }}</td>
+            <td style="width:85px;">  {{ item.qty }}</td>
+            <td style="width:50px;">  {{ item.achieved }}</td>
+            <td style="width:50px;">  {{ (item.qty)-(item.achieved) }}</td>
+            <td style="width:95px;">
+              <button class="btn btn-xs btn-success" data-toggle="modal" data-target="#exampleModalCenter" (click)="getAllotment(dataItem._id,item.material)">Allotment</button>
+              <button class="btn btn-xs btn-danger">Unallotment</button>
+            </td>
+          </tr>
+
+
+        </table>
+
+    </ng-template>
+  </kendo-grid-column>
+
+
+
+
+
+
+ <kendo-grid-column
+ title="Controls"
+ [width]="100"
+ [class]="{ 'text-center': true }"
+ [resizable]="false"
+ [filterable]="false"
+>
+ <ng-template kendoGridCellTemplate let-disposal>
+  <kendo-menu>
+    <kendo-menu-item text="Action">
+      <kendo-menu-item text="Edit" url="" icon="edit"> </kendo-menu-item>
+      <kendo-menu-item text="Delete" icon="delete"></kendo-menu-item>
+    </kendo-menu-item>
+
+  </kendo-menu>
+ </ng-template>
+</kendo-grid-column>
+</kendo-grid> -->

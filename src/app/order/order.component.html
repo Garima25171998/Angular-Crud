@@ -1,0 +1,324 @@
+<app-header></app-header>
+<app-sidenav></app-sidenav>
+
+<div id="content" class="app-content" role="main">
+  <div class="app-content-body ">
+    <form role="form" [formGroup]="POform" (ngSubmit)="onFormSubmit()">
+    <div class=" b-b-none wrapper-md main">
+      <div class="row">
+        <div class="col-sm-6 col-xs-12">
+          <h4 class="m-n font-bold ">Order/PO</h4>
+        </div>
+        <div class="col-sm-6 text-right poppins hidden-xs">
+              <button type="cancel" class=" bt light">Cancel</button>
+              <button type="submit" class=" bt danger" [disabled]="isValidbutton" (click)="saveform('save')">Save</button>
+              <button type="submit" class=" bt dark" [disabled]="isValidbutton" (click)="saveasnewform('savenew')">Save &
+                New</button>
+        </div>
+      </div>
+    </div>
+    <div class="wrapper-md" ng-controller="FormDemoCtrl">
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="panel panel-default">
+              <div class="panel-heading font-bold">Customer Source </div>
+              <div class="panel-body">
+
+                <div class="col-md-6 form-group">
+                  <label>Customer Order/PO ID:</label>
+                  <input type="text" class="form-control"  formControlName="PO_id" readonly>
+                </div>
+                <div class="form-group  col-md-6 ">
+                  <label class="control-label ">Organisation/Brand:</label>
+                    <ng-multiselect-dropdown name="city"  [data]="Customers"  [settings]="dropdownSettings" (onSelect)="onItemSelect($event)" [disabled]="disabled"  > </ng-multiselect-dropdown>
+                </div>
+                <div class="clearfix"></div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-------end content1-->
+        <!-------start content2-->
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="panel panel-default">
+              <div class="panel-heading font-bold">Customer Information</div>
+              <div class="panel-body">
+                <div class="col-md-4 form-group">
+                  <label>Industry Type: </label>
+                  <input type="text" class="form-control" value="{{ this.customerdata?.industry_type }}" readonly>
+
+                </div>
+
+                <div class="form-group  col-md-4 ">
+                  <label>First Name </label>
+                    <input type="text" class="form-control" value="{{ this.customerdata?.first_name }}" readonly>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>Last Name : </label>
+                  <input type="text" class="form-control"  value="{{ this.customerdata?.last_name }}" readonly>
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="form-group  col-md-4">
+                  <label>Phone</label>
+                  <div class="input-group">
+                    <span class="input-group-addon">+91
+                    </span>
+                    <input type="text" class="form-control"  value="{{ this.customerdata?.phone }}" readonly>
+                  </div>
+                </div>
+
+                <div class="form-group  col-md-4 ">
+                  <label>Mobile</label>
+                  <div class="input-group">
+                    <span class="input-group-addon">+91
+                    </span>
+                    <input type="text" class="form-control" placeholder=" " value="{{ this.customerdata?.mobile }}" readonly >
+                  </div>
+                </div>
+
+                <div class="col-md-4 form-group">
+                  <label>PAN No : </label>
+                  <input type="text" class="form-control" value="{{ this.customerdata?.pan_no }}" readonly>
+                </div>
+                <div class="clearfix"></div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-------end content2-->
+        <!-------start content3-->
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="panel panel-default">
+
+              <div class="panel-body">
+                <div class="col-md-12" style="padding: 0px;margin:0px;">
+
+                  <div class="row">
+                    <div class="col-sm-6 col-xs-12">
+                      <b class="upper-heding"> Attachment</b>
+                    </div>
+                    <div class="col-sm-6 text-right poppins hidden-xs">
+
+                      <b data-toggle="modal" data-target="#exampleModalCenter" style="cursor: pointer;"
+                        class="upper-heding"> Attach <i class="fa fa-paperclip upper-heding" aria-hidden="true"></i></b>
+
+                    </div>
+                  </div>
+
+
+                </div>
+                <br>
+                <br>
+                <div class="row">
+                  <div class="col-md-12" style="padding:0px;">
+                    <table class="table">
+                      <thead>
+                        <tr style="background:#E4F6EA; ">
+                          <th>Document Type</th>
+                          <th>Document No</th>
+                          <th>File Name (File Size)</th>
+                          <th>Validity</th>
+                          <th>Action</th>
+
+                        </tr>
+                        <tr *ngFor="let attachmentrow of ccattachments">
+                          <th>{{attachmentrow.document_type}}</th>
+                          <th>{{attachmentrow.document_no}} </th>
+                          <th><a href="{{attachmentrow.image}}"><i class="fa fa-file" aria-hidden="true"></i> File</a></th>
+                          <th>{{attachmentrow.validity}}</th>
+                          <th>
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                          </th>
+                        </tr>
+                      </thead>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-------end content3-->
+        <!-------start content4-->
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="panel panel-default">
+
+              <div class="panel-body">
+                <div class="col-md-12" style="padding: 0px;margin:0px;">
+                  <div class="col-md-10 ">
+                    <b class="upper-heding">Material Information</b>
+                  </div>
+                  <div style="text-align: right;padding-right:18px; ">
+                    <button type="submit" class=" bt dark " (click)="addinfo($event)" style="cursor: pointer;">Add
+                      Material</button>
+
+                  </div>
+                </div>
+
+
+
+
+                <div class="row">
+                  <div class="col-md-12" style="padding:0px; margin-top:1.5%">
+                    <table class="table tbl">
+                      <thead>
+                        <tr style="background:#E4F6EA; ">
+                          <th>Material Name</th>
+                          <th>State</th>
+                          <th>Collection Qty (Kg)</th>
+                          <th>Target Date</th>
+                          <th>Net Unit Price</th>
+                          <th>Sub Total(INR)</th>
+                          <th>Action</th>
+                        </tr>
+                        <tr *ngFor="let row of materialInfo;index as i">
+                          <th>
+                            <select class="tbl-input form-control" style="width: 130px;" (change)="onchangetext($event,i,'material_name')">
+                              <option value="">Select Material</option>
+                              <option value="MLP">MLP</option>
+                              <option value="Non MLP">Non MLP</option>
+                              <option value="Rigid">Rigid</option>
+                              <option value="Flexible">Flexible</option>
+                            </select>
+                            <span *ngIf="materialerror[i].material_name" class="text-danger"> Material is Required</span>
+                          </th>
+                          <th>
+                            <select class="form-control"  (change)="[getdistrict($event),onchangetext($event,i,'state')]">
+                              <option value="">Select State</option>
+                            <option *ngFor="let obj of statedata" value={{obj}}> {{obj}} </option>
+                            </select>
+                            <span *ngIf="materialerror[i].state" class="text-danger"> State is Required</span>
+                          </th>
+                          <th><input type="" (input)="this.onchange($event,i,'collection_Qty')" class="tbl-input form-control" value="0" ><span *ngIf="materialerror[i].qty" class="text-danger"> Qty is Required</span></th>
+                          <th><input type="date" class="tbl-input form-control" style="width: 150px;" (change)="onchangetext($event,i,'target_date')"><span *ngIf="materialerror[i].targetdate" class="text-danger"> Target Date is Required</span></th>
+                          <th><input type="number" value="0" class="tbl-input form-control" (input)="this.onchange($event,i,'net_unit_price')"><span *ngIf="materialerror[i].price" class="text-danger"> Price is Required</span></th>
+                          <th>{{ row.sub_total }}</th>
+                          <th style="font-size: 14.4px;">
+                            <i class="fa fa-trash" aria-hidden="true" (click)="deleteinfo($event,i)"></i>
+                          </th>
+                        </tr>
+
+
+                      </thead>
+                    </table>
+                  </div>
+                </div>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-------end content4-->
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="panel panel-default">
+              <div class=" panel-heading  font-bold">Remark </div>
+
+              <div class="panel-body">
+
+
+                <div class="col-md-12 form-group">
+
+                  <input type="text" class="form-control" placeholder="Remark" formControlName="remark">
+                </div>
+
+
+
+                <div class="clearfix"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: right; margin:10px 0px;">
+
+              <button type="cancel" class=" bt light">Cancel</button>
+              <button type="submit" class=" bt danger" [disabled]="isValidbutton" (click)="saveform('save')">Save</button>
+              <button type="submit" class=" bt dark" [disabled]="isValidbutton" (click)="saveasnewform('savenew')">Save &
+                New</button>
+        </div>
+    </div>
+    </form>
+  </div>
+
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document" style="width: 30%;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle" style="padding-top: 1%;color:black;">
+            Attached Document:</h5>
+
+        </div>
+        <form [formGroup]="POformModal" (ngSubmit)="onModalFormSubmit()">
+          <div class="modal-body">
+
+            <div class="form-group">
+              <label for="exampleInputEmail1">Document Type</label>
+
+              <select class="form-control" formControlName="document_type">
+                <option value="PO">PO</option>
+                <option value="Agreement">Agreement</option>
+                <option value="MOU">MOU</option>
+                <option value="Work Order">Work Order</option>
+              </select>
+              <div *ngIf="fm.document_type.errors && fm.document_type.errors.required && isValidFormSubmittedModal"
+                class="text-danger text-left mb-1 errorcontrols">
+                <div *ngIf="fm.document_type.errors.required"><small>document type is required.</small></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Document No</label>
+              <input type="text" class="form-control" placeholder="Enter Document No" formControlName="document_no">
+              <div *ngIf="fm.document_no.errors && fm.document_no.errors.required && isValidFormSubmittedModal"
+                class="text-danger text-left mb-1 errorcontrols">
+                <div *ngIf="fm.document_no.errors.required"><small>document no is required.</small></div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="exampleInputPassword1">File Name</label>
+              <input type="file" class="form-control" formControlName="image" (change)="fileupload($event)">
+              <div *ngIf="fm.image.errors && fm.image.errors.required && isValidFormSubmittedModal"
+                class="text-danger text-left mb-1 errorcontrols">
+                <div *ngIf="fm.image.errors.required"><small>file is required.</small></div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="exampleInputPassword1">Validity</label>
+              <input type="date" class="form-control" formControlName="validity">
+              <div *ngIf="fm.validity.errors && fm.validity.errors.required && isValidFormSubmittedModal"
+                class="text-danger text-left mb-1 errorcontrols">
+                <div *ngIf="fm.validity.errors.required"><small>validity is required.</small></div>
+              </div>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+
+            <button type="cancel" class=" bt light upbt" data-dismiss="modal" #closebutton>Cancel</button>
+            <button type="submit" class=" bt danger upbt" [disabled]="isValidbuttonModal">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- mode end -->
+

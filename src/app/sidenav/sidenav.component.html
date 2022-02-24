@@ -1,0 +1,136 @@
+<aside id="aside" class="app-aside hidden-xs bg-white">
+  <div class="aside-wrap" id="sidebar">
+    <div class="navi-wrap">
+    <!-- nav -->
+    <nav ui-nav class="navi clearfix" id="leftmenuinnerinner">
+      <ul class="nav">
+        <li class="hidden-folded padder m-t m-b-sm text-muted font-bold text-10">
+          <span style="color: #AAAAAA;">NAVIGATION </span>
+        </li>
+        <li>
+          <a routerLink="/" >
+            <i class="glyphicon glyphicon-th-large" style="color: #AAAAAA;"></i>
+            <span style="color: black;"><strong style="color:#5BCD85">Dashboard</strong></span>
+          </a>
+        </li>
+
+        <li>
+          <a routerLink="/view-customer" routerLinkActive="active">
+            <i class="fa fa-user" aria-hidden="true"style="color: #AAAAAA;"></i>
+            <span style="color: black;">Customer</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/order-list" routerLinkActive="active">
+            <i class="fa fa-first-order" aria-hidden="true"style="color: #AAAAAA;"></i>
+            <span style="color: black;" >Order/PO</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/target-list" routerLinkActive="active">
+            <i class="fa fa-bullseye" aria-hidden="true"style="color: #AAAAAA;"></i>
+            <span style="color: black;">Target Setting</span>
+          </a>
+        </li>
+
+        <li>
+          <a routerLink="/disposal-execution-list" routerLinkActive="active">
+            <i class="fa fa-plus-square" aria-hidden="true" style="color: #AAAAAA;"></i>
+            <span style="color: black;">Collection & <br> Disposal Execution</span>
+          </a>
+        </li>
+
+        <li class="hidden-folded padder m-t m-b-sm text-muted font-bold text-10">
+          <span style="font-size: 1.2rem;">System Configuration </span>
+        </li>
+        <li>
+          <a routerLink="/ulb-list" routerLinkActive="active">
+            <i class="fa fa-circle-o" aria-hidden="true" style="color: #AAAAAA;"></i>
+            <span style="color: black;">ULB</span>
+          </a>
+        </li>
+
+        <li>
+          <a routerLink="/collectioncenter-list" routerLinkActive="active">
+            <i class="fas fa-album-collection" style="color: #AAAAAA;"></i>
+            <span style="color: black;">Collection Centers</span>
+          </a>
+        </li>
+
+        <li>
+          <a routerLink="/transporter-list" routerLinkActive="active">
+            <i class="fa fa-truck" aria-hidden="true" style="color: #AAAAAA;"></i>
+            <span style="color: black;">Transporter</span>
+          </a>
+        </li>
+        <li>
+
+        <li>
+          <a routerLink="/disposal-list" routerLinkActive="active">
+            <i class="fa fa-stop" aria-hidden="true"></i>
+            <span style="color: black;">Disposal<br> Facility/PWPF</span>
+          </a>
+        </li>
+
+        <li class="hidden-folded padder m-t m-b-sm text-muted font-bold text-10">
+          <span style="font-size: 1.2rem;">Settings</span>
+        </li>
+
+        <li>
+          <a routerLink="/userlist" routerLinkActive="active">
+            <i><img src="assets/asset/img/user.svg" class="side-img1" ></i>
+            <span style="color: black;">User</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/role" routerLinkActive="active">
+            <i><img src="assets/asset/img/Role & Permission.svg" class="side-img1" ></i>
+            <span style="color: black;">Role and Permission</span>
+          </a>
+        </li>
+
+        <li class="line dk"></li>
+        <li class="hidden-folded padder m-t m-b-sm text-muted font-bold text-10">
+          <span>LOGOUT</span>
+        </li>
+        <li>
+          <a (click)="logout()" routerLink="/login" routerLinkActive="active">
+            <i><img src="assets/asset/img/logout.svg" class="side-img" ></i>
+            <span>Logout </span>
+
+          </a>
+        </li>
+
+      </ul>
+    </nav>
+    <!-- nav -->
+      <!-- aside footer -->
+      <div class="aside-footer wrapper-sm poppins">
+        <div class="text-center-folded text-center">
+          <p class="hidden-folded text-xs m-b-xs">
+            Need help ?
+            <a href="https://www.troology.com/" target="_blank" class="font-weight-600">Contact us</a>
+          </p>
+          <p class="hidden-folded text-xs m-b-md">
+            <a href="https://www.troology.com/" target="_blank"><i class="fa fa-bug"></i> Report a bug?</a>
+          </p>
+          <!-- <img
+             src="../../assets/img/Group.png"
+             style="background-color: red;"
+             class="center-block img-responsive m-b-xs"
+             width="75px"
+           /> -->
+
+          <hr style="margin: 10px 0;" />
+          <p class="hidden-folded text-10 text-muted font-weight-600 text-uppercase m-b-xs">
+            <a href="">Support Manual</a>
+          </p>
+          <p class="hidden-folded text-10 text-muted font-weight-600 text-uppercase m-b-xs">
+            <a href="">Copyright Information</a>
+          </p>
+        </div>
+      </div>
+      <!-- / aside footer -->
+    </div>
+  </div>
+</aside>

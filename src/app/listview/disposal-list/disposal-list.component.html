@@ -1,0 +1,85 @@
+<app-header></app-header>
+<app-sidenav></app-sidenav>
+<div id="content" class="app-content" role="main">
+    <div class="app-content-body ">
+      <div class="bg-white b-b-none wrapper-md main">
+        <div class="row">
+          <div class="col-sm-6 col-xs-6">
+            <h4 class="m-n font-bold ">Disposal Facility/PWPF List</h4>
+          </div>
+          <div class="col-sm-6 text-right poppins hidden-xs">
+            <button routerLink="/disposal" class="button"><i
+              class="fa fa-plus"></i> Add Disposal</button>
+          </div>
+        </div>
+      </div>
+ 
+<kendo-grid
+   [kendoGridBinding]="gridView"
+   kendoGridSelectBy="id"
+   [selectedKeys]="mySelection"
+   [pageSize]="20"
+   [pageable]="true"
+   [sortable]="true"
+   [reorderable]="true"
+   [resizable]="true"
+   [height]="500"
+   [columnMenu]="{ filter: true }">
+   <ng-template kendoGridToolbarTemplate>
+     <input
+       placeholder="Search in all columns..."
+       kendoTextBox
+       (input)="onFilter($event)"
+       />
+     <kendo-grid-spacer></kendo-grid-spacer>
+
+   </ng-template>
+   
+   
+     <kendo-grid-column title="ID" [width]="100">
+       <ng-template kendoGridCellTemplate let-dataItem>
+        
+         <div class="disposal_id text-theme"># {{dataItem.disposal_id}}</div>
+         <div class="company_type ">Company : {{dataItem.company_type}}</div>
+         <div class="disposal_company_name ">Disposal Company : {{dataItem.disposal_company_name}}</div>
+        
+       </ng-template>
+     </kendo-grid-column>
+    
+     <kendo-grid-column title="state" [width]="100">
+      <ng-template kendoGridCellTemplate let-dataItem>
+        <div class="state">Company : {{dataItem.state}}</div>
+        <div class="city ">Disposal Company : {{dataItem.city}}</div>
+       
+      </ng-template>
+    </kendo-grid-column>
+    
+
+     <kendo-grid-column field="contact" title="Contact" [width]="100">
+      <ng-template kendoGridCellTemplate let-dataItem>
+        <div class="first_name"><i class="fa fa-user" aria-hidden="true"></i> {{ dataItem.first_name + " "+ dataItem.last_name }}</div>
+        <div class="mobile"><i class="fa fa-phone" aria-hidden="true"></i> {{ dataItem. phone }}</div>
+        <div class="email"><i class="fa fa-envelope" aria-hidden="true"></i> {{ dataItem. email }}</div>
+
+      </ng-template>
+    </kendo-grid-column>
+
+    <kendo-grid-column
+    title="Action"
+    [width]="100"
+    [class]="{ 'text-center': true }"
+    [resizable]="false"
+    [filterable]="false"
+   >
+    <ng-template kendoGridCellTemplate let-disposal>
+     <kendo-menu>
+       <kendo-menu-item icon="gear">
+         <kendo-menu-item text="Edit" url="/edit-disposal/{{disposal._id}}" icon="edit"> </kendo-menu-item>
+         <kendo-menu-item text="Delete" icon="delete"></kendo-menu-item>
+       </kendo-menu-item>
+      
+     </kendo-menu>
+    </ng-template>
+  </kendo-grid-column>
+ </kendo-grid>
+</div></div>

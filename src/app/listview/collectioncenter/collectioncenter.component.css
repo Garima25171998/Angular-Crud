@@ -1,0 +1,27 @@
+
+.k-grouping-header{
+    display:none !important
+}
+.dropdown{
+    position: absolute !important;
+    margin-top: -18px;
+}
+
+.dropdown{
+    min-width: unset !important;
+    text-align: left;
+}
+.dropdown-menu{
+    min-width: unset !important;
+    text-align: left;
+    width:70px;
+    padding:0 3px
+}
+.fa{
+    margin-right: 5px;
+}
+
+.dropdown-menu p{
+    cursor: pointer;
+}
+

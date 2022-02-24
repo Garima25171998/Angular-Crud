@@ -1,0 +1,90 @@
+<app-header></app-header>
+<app-sidenav></app-sidenav>
+<div id="content" class="app-content" role="main">
+  <div class="app-content-body ">
+    <div class="bg-white b-b-none wrapper-md">
+      <div class="row">
+        <div class="col-sm-6 ">
+          <h4 class="m-n font-bold ">Order/PO Allotment</h4>
+        </div>
+        <div class="col-sm-6 text-right poppins hidden-xs">
+          <!-- <a href="/order" class="btn m-b-xs btn-sm text-10 btn-info btn-3d add-role-model"><i class="fa fa-plus"></i>
+            Add Order/PO</a> -->
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>PO ID: {{ allPO.PO_id }}</p>
+      <p>PO Date: {{ allPO.created_at|date:'dd-MM-yyyy' }}</p>
+      <p>Material: {{ podata.materialAllot }}</p>
+    </div>
+    <table datatable class="table table-striped">
+      <thead>
+        <tr>
+          <th>States</th>
+          <th>Quantity</th>
+          <th>Target Date</th>
+          <th>Achieved Qty.</th>
+          <th>Price</th>
+          <th>Allotment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of materialPO">
+          <td>{{ item.state}}</td>
+          <td>{{ item.collection_Qty}}</td>
+          <td>{{ item.target_date}}</td>
+          <td>{{ item.achieved_qty}}</td>
+          <td>{{ item.net_unit_price }}</td>
+          <td><button class="btn btn-success btn-xs" (click)="getallotmentstatewise(item._id,podata.materialAllot,item.state,item.collection_Qty,item.achieved_qty)">Allotment</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <div *ngIf="allotmentstate!=false">
+    <h3>Allotment in {{ allotmentstate }}</h3>
+    <table datatable class="table table-striped">
+      <thead>
+        <tr>
+          <th>City</th>
+          <th>Collection Qty</th>
+          <th>Disposed Qty</th>
+          <th>Alloted Qty</th>
+          <th>Vehicle No</th>
+          <th>E-Way Bill No</th>
+          <th>Bucket</th>
+          <th>Qty</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of disposalallotment; index as i">
+          <td>{{ item.city}}</td>
+          <td>
+            {{ item.collection_material_weight}}<br/>
+            {{ item.collection_date_time|date:'dd-MM-yyyy' }}
+          </td>
+          <td>
+            {{ item.disposal_material_weight}}<br />
+            {{ item.disposal_date_time|date:'dd-MM-yyyy' }}
+          </td>
+          <td>{{ item.disposad_qty}}</td>
+          <td>{{ item.vehicle_no}}</td>
+          <td>{{ item.e_way_bill }}</td>
+          <td>
+            <select class="form-control" (change)="getbucket($event,i,item.disposal_material_weight)">
+              <option value="partial" selected>Partial bucket</option>
+              <option value="full">Full bucket</option>
+            </select>
+          </td>
+          <td>
+            <input type="number" class="form-control" value="{{ disposalqtyarr[i] }}" (input)="checkdisposedvalue($event,item.disposal_material_weight,i,item.disposad_qty)" [disabled]="textreadonly[i]">
+          </td>
+        </tr>
+        <tr>
+          <th colspan="6"></th>
+          <th>Total Quantity</th>
+          <th>{{ sumqtyval }} <button class="btn btn-success" (click)="allotment()">Alloted</button></th>
+        </tr>
+      </tbody>
+    </table>
+    </div>

@@ -1,0 +1,90 @@
+<app-header></app-header>
+<app-sidenav></app-sidenav>
+<div id="content" class="app-content" role="main">
+    <div class="app-content-body ">
+      <div class="bg-white b-b-none wrapper-md main">
+        <div class="row">
+          <div class="col-sm-6 col-xs-6">
+            <h4 class="m-n font-bold ">ULB List</h4>
+          </div>
+          <div class="col-sm-6 text-right poppins hidden-xs">
+            <button routerLink="/ulb" class="button"><i
+              class="fa fa-plus"></i> Add ULB</button>
+          </div>
+        </div>
+      </div>
+
+
+<kendo-grid
+   [kendoGridBinding]="gridView"
+   kendoGridSelectBy="id"
+   [selectedKeys]="mySelection"
+   [pageSize]="20"
+   [pageable]="true"
+   [sortable]="true"
+   [reorderable]="true"
+   [resizable]="true"
+   [height]="500"
+   [columnMenu]="{ filter: true }"
+ >
+   <ng-template kendoGridToolbarTemplate>
+     <input
+       placeholder="Search in all columns..."
+       kendoTextBox
+       (input)="onFilter($event)"
+       />
+     <kendo-grid-spacer></kendo-grid-spacer>
+
+
+   </ng-template>
+
+
+     <kendo-grid-column field="user_id" title="ID" [width]="100">
+       <ng-template kendoGridCellTemplate let-dataItem>
+
+         <div class="text-theme ulb_id"># {{dataItem.ulb_id}}</div>
+         <div class="ulb_name">ULB : {{dataItem.ulb_name}}</div>
+         <div class="gstin">GSTIN : {{dataItem.gstin}}</div>
+
+       </ng-template>
+     </kendo-grid-column>
+    
+
+
+     <kendo-grid-column  title="Contact" [width]="100">
+      <ng-template kendoGridCellTemplate let-dataItem>
+
+        <div class="first_name"><i class="fa fa-user" aria-hidden="true"></i>{{ dataItem.first_name + " "+ dataItem.last_name }}</div>
+        <div class="mobile"><i class="fa fa-phone" aria-hidden="true"></i> {{ dataItem. mobile }}</div>
+        <div class="email"><i class="fa fa-envelope" aria-hidden="true"></i> {{dataItem. email }}</div>
+      </ng-template>
+    </kendo-grid-column>
+
+     <kendo-grid-column title="State" [width]="100">
+      <ng-template kendoGridCellTemplate let-dataItem>
+
+        <div field="state" class="state">State : {{ dataItem.state }}</div>
+        <div class="city"field="city">
+          City :  {{ dataItem.city }}</div>
+
+      </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column
+    title="Action"
+    [width]="100"
+    [class]="{ 'text-center': true }"
+    [resizable]="false"
+    [filterable]="false"
+   >
+    <ng-template kendoGridCellTemplate let-ulb>
+     <kendo-menu>
+       <kendo-menu-item class="k-icons" icon="gear">
+         <kendo-menu-item text="Edit" icon="edit" url="/edit-ulb/{{ ulb._id }}"> </kendo-menu-item>
+         <kendo-menu-item text="Delete" icon="delete" ></kendo-menu-item>
+       </kendo-menu-item>
+
+     </kendo-menu>
+    </ng-template>
+  </kendo-grid-column>
+ </kendo-grid>
+</div></div>

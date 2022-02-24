@@ -1,0 +1,461 @@
+<app-header></app-header>
+<app-sidenav></app-sidenav>
+
+<div id="content" class="app-content" role="main">
+  <div class="app-content-body ">
+    <form  [formGroup]="Customerform" (ngSubmit)="onFormSubmit()">
+    <div class=" b-b-none wrapper-md main">
+      <div class="row">
+        <div class="col-sm-6 col-xs-12">
+          <h4 class="m-n font-bold ">Customer</h4>
+        </div>
+        <div class="col-sm-6 text-right poppins hidden-xs">
+          <button type="cancel" class=" bt light">Cancel</button>
+          <button type="submit" class=" bt danger" [disabled]="isValidbutton" (click)="saveform('save')">Save</button>
+          <button type="submit" class=" bt dark" [disabled]="isValidbutton" (click)="saveasnewform('savenew')">Save & New</button>
+        </div>
+      </div>
+    </div>
+    <div class="wrapper-md" ng-controller="FormDemoCtrl">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="panel panel-default">
+              <div class=" panel-heading"><b>Customer Source</b> </div>
+              <div class="panel-body">
+                <div class="col-md-4 form-group">
+                  <label> Customer ID </label>
+                  <input type="text" class="form-control" formControlName="customer_id" readonly>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>Industry Type </label>
+                  <select class="form-control" formControlName="industry_type">
+                    <option value="">select Industry Type </option>
+                    <option value="test1">Test1</option>
+                    <option value="test2">Test2</option>
+                    <option value="test3">Test3</option>
+                  </select>
+                  <div *ngIf="f.industry_type.errors && f.industry_type.errors.required && isValidFormSubmitted"
+                    class="text-danger text-left mb-1 errorcontrols">
+                    <div *ngIf="f.industry_type.errors.required"><small>Industry is required.</small></div>
+
+                  </div>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label> Organization Name </label>
+                  <input type="text" class="form-control" placeholder="Enter Organization Name"
+                    formControlName="organization_name">
+                    <div *ngIf="f.organization_name.errors && f.organization_name.errors.required && isValidFormSubmitted"
+                      class="text-danger text-left mb-1 errorcontrols">
+                      <div *ngIf="f.organization_name.errors.required"><small>Industry is required.</small></div>
+
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- start  -->
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="panel panel-default">
+              <div class=" panel-heading"><b>Customer Information</b> </div>
+
+              <div class="panel-body">
+
+                <div class="col-md-4 form-group">
+                  <label> First Name </label>
+                  <div class="input-group">
+                    <span class="input-group-addon">
+                      <select class="box-dropdown" formControlName="title">
+                        <option value="">Title</option>
+                        <option value="Mr.">Mr</option>
+                        <option value="Mrs.">Mrs</option>
+                        <option value="Miss.">Miss</option>
+                      </select>
+                    </span>
+                    <input type="text" class="form-control" placeholder=" Enter First  Name"
+                      formControlName="first_name">
+                  </div>
+                  <div *ngIf="f.first_name.errors && f.first_name.errors.required && isValidFormSubmitted"
+                    class="text-danger text-left mb-1 errorcontrols">
+                    <div *ngIf="f.first_name.errors.required"><small>First name is required.</small></div>
+                  </div>
+                </div>
+
+                <div class="col-md-4 form-group">
+                  <label>Last Name </label>
+                  <input type="text" class="form-control" placeholder="Enter Last Name" formControlName="last_name">
+                </div>
+
+                <div class="col-md-4 form-group">
+                  <label> Phone </label>
+                  <div class="input-group">
+                    <span class="input-group-addon">+91
+                    </span>
+                    <input type="number" class="form-control" placeholder="Enter Phone Number" formControlName="phone">
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-4 form-group">
+                  <label> Mobile </label>
+                  <div class="input-group">
+                    <span class="input-group-addon">+91
+                    </span>
+                    <input type="text" class="form-control" placeholder="Enter Mobile Number" formControlName="mobile">
+                  </div>
+                  <div *ngIf="f.mobile.errors  && isValidFormSubmitted" class="text-danger text-left mb-1 errorcontrols">
+                    
+                    <div *ngIf="f.mobile.errors.pattern">Provide 10 digit phone number</div>
+                  </div>
+                </div>
+
+                <!-- <div class="col-md-4 form-group">
+                  <label>Email </label>
+                  <input type="email" class="form-control" placeholder="Enter Email" formControlName="email">
+                
+                </div> -->
+               
+
+                <!-- <div class="col-md-4 form-group">
+                  <label>Email </label>
+                  <input type="email" class="form-control" placeholder="Enter Email" formControlName="email">
+                  <div *ngIf=" f.email.invalid && isValidFormSubmitted"
+                    class="text-danger text-left mb-1 errorcontrols">
+                    <div *ngIf="f.email.invalid"><small>Invalid Email.</small></div>
+                  </div>
+                </div> -->
+
+
+                <div class="col-md-4 form-group">
+                  <label> Email </label>
+                  
+                    <input type="email" class="form-control" placeholder="Enter Email" formControlName="email">
+                  
+                  <div *ngIf="f.email.errors  && isValidFormSubmitted" class="text-danger text-left mb-1 errorcontrols">
+                    
+                    <div *ngIf="f.email.errors.pattern">Invalid Email</div>
+                  </div>
+                </div>
+
+
+                <div class="col-md-4 form-group">
+                  <label>Secondary E-Mail </label>
+                  
+                  <input type="email" class="form-control" placeholder="Enter Secondary E-Mail"
+                  formControlName="secondary_email">
+                  
+                  <div *ngIf="f.secondary_email.errors  && isValidFormSubmitted" class="text-danger text-left mb-1 errorcontrols">
+                    
+                    <div *ngIf="f.secondary_email.errors.pattern">Invalid Email</div>
+                  </div>
+                </div>
+
+                <!-- <div class="col-md-4 form-group">
+                  <label>Secondary E-Mail</label>
+                  <input type="email" class="form-control" placeholder="Enter Secondary E-Mail"
+                    formControlName="secondary_email">
+                </div> -->
+                <div class="clearfix"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end -->
+        <!-- start  -->
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="panel panel-default">
+              <div class=" panel-heading"><b>Registered Address</b> </div>
+
+              <div class="panel-body">
+
+                <div class="col-md-4 form-group">
+                  <label>Address Line 1 </label>
+                  <textarea class="form-control textarea " placeholder="Address Line 1" formControlName="red_address1"
+                  id="reg_address1"></textarea>
+                </div>
+
+                <div class="col-md-4 form-group">
+                  <label>Address Line 2 </label>
+
+                  <textarea class="form-control " placeholder="Address Line 2" formControlName="reg_address2"></textarea>
+
+
+                </div>
+
+                <div class="col-md-4 form-group">
+                  <label>Postal/Zip Code </label>
+                  <input type="text" (blur)="handlePincode($event)" class="form-control pincode_g"
+                    placeholder="Enter Postal/Zip Code " formControlName="reg_zipcode">
+                    <div *ngIf="pincodeerrorStatus" class="text-danger text-left mb-1 errorcontrols">
+                      <div><small>{{ pincodeerrormsg}}</small></div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-4 form-group">
+                  <label>State </label>
+                  <input type="text" class="form-control " placeholder="" value="{{ states }}" formControlName="reg_state" readonly>
+                </div>
+
+                <div class="col-md-4 form-group">
+                  <label>City</label>
+                  <input type="text" class="form-control " placeholder="" value="{{ district }}" formControlName="reg_city" readonly>
+                </div>
+
+                <div class="col-md-4 form-group">
+                  <label>Country</label>
+                <input type="text" class="form-control " placeholder="" value="{{ country }}" formControlName="reg_country" readonly>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end -->
+
+
+        <!-- start  -->
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="panel panel-default">
+              <div class=" panel-heading font-bold"> Communication Address<br>
+                <!-- Same As <input type='checkbox' (click)="check()">  -->
+              </div>
+
+              <div class="panel-body">
+
+                <div class="col-md-4 form-group">
+                  <label>Address Line 1 </label>
+
+                    <textarea class="form-control " placeholder="Enter Address Line 1"
+                    formControlName="com_address1"></textarea>
+                </div>
+
+                <div class="col-md-4 form-group">
+                  <label>Address Line 2 </label>
+
+                  <textarea class="form-control " placeholder="Address Line 2" formControlName="com_address2"></textarea>
+
+
+                </div>
+
+                <div class="col-md-4 form-group">
+                  <label>Postal/Zip Code </label>
+                  <input type="text" (blur)="handlePincode1($event)" class="form-control pincode_g"
+                    placeholder="Enter Postal/Zip Code " formControlName="com_zipcode">
+                    <div *ngIf="c_pincodeerrorStatus" class="text-danger text-left mb-1 errorcontrols">
+                      <div><small>{{ c_pincodeerrormsg}}</small></div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-4 form-group">
+                  <label>State </label>
+                  <input type="text" class="form-control " placeholder="" formControlName="com_state" value="{{ c_states }}" readonly>
+                </div>
+
+                <div class="col-md-4 form-group">
+                  <label>City</label>
+                  <input type="text" class="form-control " placeholder="" formControlName="com_city" value="{{ c_district }}" readonly>
+                </div>
+
+                <div class="col-md-4 form-group">
+                  <label>Country</label>
+                  <input type="text" class="form-control " placeholder="" formControlName="com_country" value="{{ c_country }}" readonly>
+
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="col-md-4 form-group">
+                  <label>Phone</label>
+                  <div class="input-group">
+                    <span class="input-group-addon">
+                      +91</span>
+                    <input type="text" class="form-control" placeholder="Enter Phone Number"
+                      formControlName="com_phone">
+                  </div>
+                </div>
+
+                <div class="col-md-4 form-group">
+                  <label>Mobile</label>
+                  <div class="input-group">
+                    <span class="input-group-addon">
+                      +91</span>
+                    <input type="text" class="form-control" placeholder="Enter Mobile Number"
+                      formControlName="com_mobile">
+                  </div>
+                </div>
+
+
+                <div class="col-md-4 form-group">
+                  <label>Email</label>
+                  <input type="text" class="form-control" name="" placeholder="Enter Email Address"
+                    formControlName="com_email">
+                </div>
+                <div class="clearfix"></div>
+
+
+                <div class="col-md-4 form-group">
+                  <label>Secondary E-Mail</label>
+                  <input type="text" class="form-control" name="" placeholder="Enter Secondary E-Mail Address "
+                    formControlName="com_secondary_email">
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end -->
+
+
+        <!-- start  -->
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="panel panel-default">
+              <div class=" panel-heading  font-bold">Business Info </div>
+
+              <div class="panel-body">
+
+                <div class="col-md-4 form-group">
+                  <label>PAN No </label>
+                  <input type="text" class="form-control " placeholder="Enter PAN No " formControlName="pan_no">
+                  <div *ngIf="f.pan_no.touched && f.pan_no.invalid && isValidFormSubmitted"
+                    class="text-danger text-left mb-1 errorcontrols">
+                    <div *ngIf="f.pan_no.invalid"><small>Invalid Pan Number.</small></div>
+                  </div>
+                </div>
+
+                <div class="col-md-4 form-group">
+                  <label>MSME NO </label>
+                  <input type="text" class="form-control " placeholder="Enter MSME NO" formControlName="msme_no">
+                </div>
+
+                <div class="col-md-4 form-group">
+                  <label>CIN No</label>
+                  <input type="text" class="form-control " placeholder="Enter CIN No" formControlName="cin_no">
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-4 form-group">
+                  <label>GST No </label>
+                  <input type="text" class="form-control " placeholder="Enter GST No" formControlName="gst_no">
+                  <div *ngIf="f.gst_no.touched && f.gst_no.invalid && isValidFormSubmitted"
+                    class="text-danger text-left mb-1 errorcontrols">
+                    <div *ngIf="f.gst_no.invalid"><small>Invalid GST Number.</small></div>
+                  </div>
+                </div>
+
+
+
+                <div class="clearfix"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end -->
+
+
+        <!-- start  -->
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="panel panel-default">
+              <div class=" panel-heading  font-bold">Registration </div>
+
+              <div class="panel-body">
+
+                <div class="col-md-6 form-group">
+                  <label>CPCB Registration </label>
+                  <select class="form-control" formControlName="cpcb_registration">
+                    <option>Yes</option>
+                    <option>No</option>
+                  </select>
+                </div>
+
+                <div class="col-md-6 form-group">
+                  <label>Validity</label>
+                  <input type="date" class="form-control " formControlName="cpcb_validity">
+                </div>
+
+                <div class="col-md-6 form-group">
+                  <label>SPCB Registration</label>
+                  <select class="form-control" formControlName="spcb_registration">
+                    <option>Yes</option>
+                    <option>No</option>
+                  </select>
+                </div>
+              
+                <div class="col-md-6 form-group">
+                  <label>Validity </label>
+                  <input type="date" class="form-control " formControlName="spcb_validity">
+                </div>
+
+
+
+                <div class="clearfix"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end -->
+
+
+        <!-- start  -->
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="panel panel-default">
+              <div class=" panel-heading  font-bold">Remark </div>
+
+              <div class="panel-body">
+
+
+
+
+
+
+                <div class="clearfix"></div>
+                <div class="col-md-12 form-group">
+
+                  <input type="text" class="form-control Remark" placeholder="Enter Remark" formControlName="remark">
+                </div>
+
+
+
+                <div class="clearfix"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end -->
+      <div style="text-align: right; margin:10px 0px;">
+
+        <button class=" bt light">Cancel</button>
+
+      <button type="submit" class=" bt danger" [disabled]="isValidbutton" (click)="saveform('save')">Save</button>
+      <button type="submit" class=" bt dark" [disabled]="isValidbutton" (click)="saveasnewform('savenew')">Save & New</button>
+
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+
+
+
+<script type="text/javascript">
+  $(document).on("change", ".pincode_g", function () {
+    let pincode = $(".pincode_g").val();
+    $.ajax({
+      url: `https://api.postalpincode.in/pincode/${reg_zipcode}`,
+      type: "GET",
+      async: false,
+      dataType: "json",
+      success: function (res) {
+        let reg_city = res[0].PostOffice[0].Block;
+        let reg_state = res[0].PostOffice[0].State;
+        $("#reg_city").val(reg_city);
+        $("#reg_state").val(reg_state);
+      },
+    });
+  });
+
+</script>

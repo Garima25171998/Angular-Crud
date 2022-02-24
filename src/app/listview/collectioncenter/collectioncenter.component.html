@@ -1,0 +1,88 @@
+<app-header></app-header>
+<app-sidenav></app-sidenav>
+<div id="content" class="app-content" role="main">
+    <div class="app-content-body ">
+      <div class="bg-white b-b-none wrapper-md main">
+        <div class="row">
+          <div class="col-sm-6 col-xs-6">
+            <h4 class="m-n font-bold ">Collection Center  List</h4>
+          </div>
+          <div class="col-sm-6 text-right poppins hidden-xs">
+            <button routerLink="/collection" class="button"><i
+            class="fa fa-plus"></i> Add Collection Center</button>
+          </div>
+        </div>
+      </div>
+
+      <kendo-grid
+      [kendoGridBinding]="gridView"
+      kendoGridSelectBy="id"
+      [selectedKeys]="mySelection"
+      [pageSize]="20"
+      [pageable]="true"
+      [sortable]="true"
+      [reorderable]="true"
+      [resizable]="true"
+      [height]="500"
+      [columnMenu]="{ filter: true }"
+    >
+      <ng-template kendoGridToolbarTemplate>
+        <input
+          placeholder="Search in all columns..."
+          kendoTextBox
+          (input)="onFilter($event)"
+          />
+        <kendo-grid-spacer></kendo-grid-spacer>
+      </ng-template>
+
+      <kendo-grid-column field="collection_center_id " title="ID" [width]="100">
+        <ng-template kendoGridCellTemplate let-dataItem>
+          <div class="text-theme"># {{dataItem.collection_center_id}}</div>
+          <div ><i _ngcontent-fcn-c561="" aria-hidden="true" class="fa fa-calendar-check-o" style="color: green;"></i> Date : {{ dataItem.created_at |date:'dd-MM-yyyy' }}</div>
+         
+        </ng-template>
+      </kendo-grid-column>
+
+        <kendo-grid-column  title="Name" [width]="100">
+          <ng-template kendoGridCellTemplate let-dataItem>
+           
+            <div class="collection_center_name text-theme">{{dataItem.collection_center_name}}</div>
+            <div class="type_collection_center">Type  : {{dataItem.type_collection_center}}</div>
+            <div class="collection_type">Collection  : {{dataItem.collection_type}}</div>
+            <div class="collection_type">ULB : {{dataItem.collection_ulb}}</div>
+          </ng-template>
+        </kendo-grid-column>
+
+
+        <kendo-grid-column field="State " [width]="100">
+          <ng-template kendoGridCellTemplate let-dataItem>
+            <div class="collection_state">State : {{dataItem.collection_state}}</div>
+            <div class="collection_district">City : {{dataItem.collection_district}}</div>
+            
+          </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-column field="contact" title="Contact" [width]="100">
+         <ng-template kendoGridCellTemplate let-dataItem>
+           <div class="first_name-name"><i class="fa fa-user" aria-hidden="true"></i>{{ dataItem.first_name + " "+ dataItem.last_name }}</div>
+           <div class="mobile"><i class="fa fa-phone" aria-hidden="true"></i> {{ dataItem.mobile }}</div>
+           <div class="email"><i class="fa fa-envelope" aria-hidden="true"></i> {{ dataItem. email }}</div>
+         </ng-template>
+       </kendo-grid-column>
+
+
+       <kendo-grid-column title="Action" [width]="100" [class]="{ 'text-center': true }" [resizable]="false"
+       [filterable]="false">
+       <ng-template kendoGridCellTemplate let-collectioncenter>
+         <kendo-menu>
+           <kendo-menu-item icon="gear">
+             <kendo-menu-item text="Edit" icon="edit" url="edit-collectioncenter/{{ collectioncenter._id }}"> </kendo-menu-item>
+             <kendo-menu-item text="Delete" icon="delete"></kendo-menu-item>
+           </kendo-menu-item>
+         </kendo-menu>
+       </ng-template>
+     </kendo-grid-column>
+    </kendo-grid>
+
+</div>
+</div>

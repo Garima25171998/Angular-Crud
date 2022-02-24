@@ -1,0 +1,524 @@
+<app-header></app-header>
+<app-sidenav></app-sidenav>
+<div id="content" class="app-content" role="main">
+  <form role="form" [formGroup]="disposalexecutionform" (ngSubmit)="onFormSubmit()">
+  <div class="app-content-body ">
+    <div class=" b-b-none wrapper-md main">
+      <div class="row">
+        <div class="col-sm-6 col-xs-12">
+          <h4 class="m-n font-bold ">Collection & Disposal Execution</h4>
+        </div>
+        <div class="col-sm-6 text-right poppins hidden-xs">
+          <button type="cancel" class=" bt light">Cancel</button>
+          <button type="submit" class=" bt danger" [disabled]="isValidbutton" (click)="saveform('save')">Save</button>
+         
+        </div>
+      </div>
+    </div>
+    <div class="wrapper-md" ng-controller="FormDemoCtrl">
+     
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="panel panel-default">
+              <div class="panel-heading font-bold">C&D Information </div>
+              <div class="panel-body">
+
+                <div class="col-md-4 form-group">
+                  <label> Material Name</label>
+                  <select class="form-control" formControlName="material_name">
+                    <option value="ab">ab</option>
+                   
+                  </select>
+                  <div *ngIf="f.material_name.errors && f.material_name.errors.required && isValidFormSubmitted"
+                    class="text-danger text-left mb-1 errorcontrols">
+                    <div *ngIf="f.material_name.errors.required"><small>Material name is required.</small></div>
+                  </div>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label> State</label>
+                  <select class="form-control" formControlName="state" (change)="getdistrict($event)">
+                    <option value="" disabled> Select State </option>
+                    <option *ngFor="let obj of statedata" value={{obj}}> {{obj}} </option>
+                  </select>
+                  <div *ngIf="f.state.errors && f.state.errors.required && isValidFormSubmitted"
+                    class="text-danger text-left mb-1 errorcontrols">
+                    <div *ngIf="f.state.errors.required"><small>State is required.</small></div>
+                  </div>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label> City</label>
+                  <select class="form-control" formControlName="city">
+                    <option value="" disabled> Select City </option>
+                    <option *ngFor="let dobj of districtdata" value={{dobj}}> {{dobj}} </option>
+                  </select>
+                  <div *ngIf="f.city.errors && f.city.errors.required && isValidFormSubmitted"
+                    class="text-danger text-left mb-1 errorcontrols">
+                    <div *ngIf="f.city.errors.required"><small>City is required.</small></div>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-4 form-group">
+                  <label> ULB</label>
+                  <select class="form-control" formControlName="ulb">
+                    <option value="test ulb">test ulb</option>
+
+                  </select>
+                  <div *ngIf="f.ulb.errors && f.ulb.errors.required && isValidFormSubmitted"
+                  class="text-danger text-left mb-1 errorcontrols">
+                  <div *ngIf="f.ulb.errors.required"><small>Ulb is required.</small></div>
+                </div>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>Collection Center</label>
+                  <select class="form-control" formControlName="collection_center">
+                    <option value="demo">demo</option>
+                  </select>
+                  <div *ngIf="f.collection_center.errors && f.collection_center.errors.required && isValidFormSubmitted"
+                  class="text-danger text-left mb-1 errorcontrols">
+                  <div *ngIf="f.collection_center.errors.required"><small>Collection center is required.</small></div>
+                </div>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label> Disposal Facility/PWPF</label>
+                  <select class="form-control"formControlName="disposal_facility_pwpf">
+                    <option value="zyz">zyz</option>
+                  </select>
+                  <div *ngIf="f.disposal_facility_pwpf.errors && f.disposal_facility_pwpf.errors.required && isValidFormSubmitted"
+                  class="text-danger text-left mb-1 errorcontrols">
+                  <div *ngIf="f.disposal_facility_pwpf.errors.required"><small>Disposal Facility/PWPF is required.</small></div>
+                </div>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="panel panel-default">
+              <div class="panel-heading font-bold">Transporter Information </div>
+              <div class="panel-body">
+
+                <div class="col-md-6 form-group">
+                  <label>Transporter Name</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder=""formControlName="transporter_name">
+                    <span class="input-group-addon"><i class="fa fa-search">
+                      </i></span>
+                  </div>
+                  <div *ngIf="f.transporter_name.errors && f.transporter_name.errors.required && isValidFormSubmitted"
+                  class="text-danger text-left mb-1 errorcontrols">
+                  <div *ngIf="f.transporter_name.errors.required"><small>Disposal Transporter Name is required.</small></div>
+                </div>
+                </div>
+
+
+
+
+
+
+                <div class="col-md-6 form-group">
+                  <label> Mobile No</label>
+                  <div class="input-group">
+                    <span class="input-group-addon">+91
+                    </span>
+                    <input type="Number" class="form-control" placeholder="Enter Mobile Number" formControlName="mobile_no">
+                    
+                  </div>
+                  <div *ngIf="f.mobile_no.errors && f.mobile_no.errors.required && isValidFormSubmitted"
+                  class="text-danger text-left mb-1 errorcontrols">
+                  <div *ngIf="f.mobile_no.errors.required"><small> Mobile No is required.</small></div>
+                </div>
+                </div>
+
+                <div class="clearfix"></div>
+                <div class="col-md-4 form-group">
+                  <label>Vehicle No</label>
+                  <input type="number" class="form-control " placeholder="Enter Vehicle No " formControlName="vehicle_no">
+                  <div *ngIf="f.vehicle_no.errors && f.vehicle_no.errors.required && isValidFormSubmitted"
+                  class="text-danger text-left mb-1 errorcontrols">
+                  <div *ngIf="f.vehicle_no.errors.required"><small>Vehicle No is required.</small></div>
+                </div>
+                </div>
+
+                <div class="col-md-4 form-group">
+                  <label>Driver Name</label>
+                  <input type="text" class="form-control " placeholder="Enter Driver Name" formControlName="driver_name">
+                  <div *ngIf="f.driver_name.errors && f.driver_name.errors.required && isValidFormSubmitted"
+                  class="text-danger text-left mb-1 errorcontrols">
+                  <div *ngIf="f.driver_name.errors.required"><small>Driver Name is required.</small></div>
+                </div>
+                </div>
+
+                <div class="col-md-4 form-group">
+                  <label>Driver Mobile No</label>
+                  <div class="input-group">
+                    <span class="input-group-addon">+91
+                    </span>
+                    <input type="number" class="form-control" placeholder="Enter Mobile Number" formControlName="driver_mobile_no">
+                  </div>
+                  <div *ngIf="f.driver_mobile_no.errors && f.driver_mobile_no.errors.required && isValidFormSubmitted"
+                  class="text-danger text-left mb-1 errorcontrols">
+                  <div *ngIf="f.driver_mobile_no.errors.required"><small>Driver Mobile No is required.</small></div>
+                </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-4 form-group">
+                  <label>Bill T No</label>
+                  <input type="number" class="form-control " placeholder="Enter Bill T No" formControlName="bill_t_no">
+                  <div *ngIf="f.bill_t_no.errors && f.bill_t_no.errors.required && isValidFormSubmitted"
+                  class="text-danger text-left mb-1 errorcontrols">
+                  <div *ngIf="f.bill_t_no.errors.required"><small>Bill T No is required.</small></div>
+                </div>
+                </div>
+
+                <div class="col-md-4 form-group">
+                  <label>E Way Bill</label>
+                  <input type="text" class="form-control " placeholder="Enter E Way Bill "  formControlName="e_way_bill">
+                  <div *ngIf="f.e_way_bill.errors && f.e_way_bill.errors.required && isValidFormSubmitted"
+                  class="text-danger text-left mb-1 errorcontrols">
+                  <div *ngIf="f.e_way_bill.errors.required"><small>E Way Bill is required.</small></div>
+                </div>
+                </div>
+
+                <div class="col-md-4 form-group">
+                  <label>Invoice No</label>
+                  <input type="number" class="form-control " placeholder="Enter Invoice No" formControlName="invoice_no">
+                  <div *ngIf="f.invoice_no.errors && f.invoice_no.errors.required && isValidFormSubmitted"
+                  class="text-danger text-left mb-1 errorcontrols">
+                  <div *ngIf="f.invoice_no.errors.required"><small>Invoice No is required.</small></div>
+                </div>
+                </div>
+
+
+              </div>
+
+
+
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="panel panel-default">
+
+              <div class="panel-body">
+                <div class="col-md-12" style="padding: 0px;margin:0px;">
+                  <div class="col-md-10 ">
+                    <b class="upper-heding">Payment</b>
+                  </div>
+                  <div style="text-align: right;padding-right:18px; ">
+                    <b style="cursor: pointer;">
+
+                      <!-- <button><i class="fa fa-plus" aria-hidden="true" (click)="addinfo($event)"></i></button> -->
+                      <button type="submit" class=" bt dark1 " >Add
+                      </button>
+                    </b>
+
+
+
+                  </div>
+                </div>
+                <div class="col-md-12" style="padding:0px; margin-top:1.5%" >
+                  <div class="col-md-4 form-group">
+                    <label>Amount</label>
+                    <input type="text" class="form-control " placeholder="Enter Amount" formControlName="amount">
+                  </div>
+
+                  <div class="col-md-4 form-group">
+                    <label>Expenditure Type</label>
+                    <input type="text" class="form-control " placeholder="Enter Expenditure No" formControlName="expenditure_type">
+                  </div>
+                  <div class="col-md-4 form-group">
+                    <label>Receipt No</label>
+                    <input type="text" class="form-control " placeholder="Enter Receipt No"formControlName="receipt_no">
+                  </div>
+
+                  <div class="clearfix"></div>
+
+                  <div class="col-md-12 text-right">
+                    <button><i class="fa fa-trash" aria-hidden="true" ></i></button>
+                  </div>
+                </div>
+
+
+
+
+              </div>
+
+
+
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="panel panel-default">
+              <div class="panel-heading font-bold">Collection Weight Information </div>
+              <div class="panel-body">
+                <div class="col-md-4 form-group">
+                  <label> Collection Date & Time (Loading)</label>
+                  <input type="datetime-local" class="form-control"formControlName="collection_date_time">
+                  <div *ngIf="f.collection_date_time.errors && f.collection_date_time.errors.required && isValidFormSubmitted"
+                  class="text-danger text-left mb-1 errorcontrols">
+                  <div *ngIf="f.collection_date_time.errors.required"><small>Collection Date & Time is required.</small></div>
+                </div>
+                </div>
+
+
+                <div class="col-md-4 form-group">
+                  <label>Material Weight</label>
+                  <div class="input-group">
+
+                    <input type="text" class="form-control" placeholder="Enter Material Weight" formControlName="collection_material_weight">
+                    <span class="input-group-addon">Kg
+                    </span>
+                  </div>
+                  <div *ngIf="f.collection_material_weight.errors && f.collection_material_weight.errors.required && isValidFormSubmitted"
+                  class="text-danger text-left mb-1 errorcontrols">
+                  <div *ngIf="f.collection_material_weight.errors.required"><small>Material Weight is required.</small></div>
+                </div>
+                </div>
+                <!-- <div class="col-md-4 form-group">
+                  <label> Loading Date</label>
+                  <input type="date" class="form-control">
+                </div>
+  <div class="clearfix"></div> -->
+
+                <div class="col-md-4 form-group">
+                  <label> Remark</label>
+                  <!-- <textarea class="form-control"></textarea> -->
+                  <input type="text" class="form-control"formControlName="collection_remark">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="panel panel-default">
+              <div class="panel-heading font-bold">Disposal Weight Information </div>
+              <div class="panel-body">
+                <div class="col-md-4 form-group">
+                  <label> Disposal Date & Time (Unloading)</label>
+                  <input type="datetime-local" class="form-control"formControlName="disposal_date_time">
+                  <div *ngIf="f.disposal_date_time.errors && f.disposal_date_time.errors.required && isValidFormSubmitted"
+                  class="text-danger text-left mb-1 errorcontrols">
+                  <div *ngIf="f.disposal_date_time.errors.required"><small>Disposal Date & Time is required.</small></div>
+                </div>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>Material Weight</label>
+                  <div class="input-group">
+
+                    <input type="text" class="form-control" placeholder="Enter Material Weight"formControlName="disposal_material_weight">
+                    <span class="input-group-addon">Kg
+                    </span>
+                  </div>
+                  <div *ngIf="f.disposal_material_weight.errors && f.disposal_material_weight.errors.required && isValidFormSubmitted"
+                  class="text-danger text-left mb-1 errorcontrols">
+                  <div *ngIf="f.disposal_material_weight.errors.required"><small>Material Weight is required.</small></div>
+                </div>
+                </div>
+                <!-- <div class="col-md-4 form-group">
+                  <label> Unloading Date</label>
+                  <input type="date" class="form-control">
+                </div>
+  <div class="clearfix"></div> -->
+                <div class="col-md-4 form-group">
+                  <label> Remark</label>
+                  <input type="text" class="form-control"formControlName="disposal_remark">
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- start  -->
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="panel panel-default">
+
+              <div class="panel-body">
+                <div class="col-md-12" style="padding: 0px;margin:0px;">
+                  <!-- <div class="col-md-10 ">
+                    <b class="upper-heding"> Attachment</b>
+                  </div>
+                  <div style="text-align: right;padding-right:18px;">
+
+                    <b data-toggle="modal" data-target="#exampleModalCenter" style="cursor: pointer;"
+                      class="upper-heding"> Attach <i class="fa fa-paperclip upper-heding" aria-hidden="true"></i></b>
+                  </div> -->
+                  <div class="row">
+                    <div class="col-sm-6 col-xs-12">
+                      <b class="upper-heding"> Attachment</b>
+                    </div>
+                    <div class="col-sm-6 text-right poppins hidden-xs">
+
+                      <b data-toggle="modal" data-target="#exampleModalCenter" style="cursor: pointer;"
+                        class="upper-heding"> Attach <i class="fa fa-paperclip upper-heding" aria-hidden="true"></i></b>
+
+                    </div>
+                  </div>
+
+
+
+                </div>
+                <br>
+                <br>
+                <div class="row">
+                  <div class="col-md-12" style="padding:0px;">
+                    <table class="table">
+                      <thead>
+                        <tr style="background:#E4F6EA; ">
+                          <th>Document Type</th>
+                          <th>Document No</th>
+                          <th>File Name (File Size)</th>
+                          <th>Validity</th>
+                          <th>Action</th>
+
+                        </tr>
+                        <tr *ngFor="let attachmentrow of ccattachments">
+                          <th>{{attachmentrow.document_type}}</th>
+                          <th>{{attachmentrow.document_no}} </th>
+                          <th><a href="{{attachmentrow.image}}"><i class="fa fa-file" aria-hidden="true"></i> File</a>
+                          </th>
+                          <th>{{attachmentrow.validity}}</th>
+                          <th>
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                          </th>
+                        </tr>
+                      </thead>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end -->
+      
+
+      <div style="text-align: right; margin:10px 0px;">
+        <button type="cancel" class=" bt light">Cancel</button>
+            <button type="submit" class=" bt danger" [disabled]="isValidbutton" (click)="saveform('save')">Save</button>
+            
+      </div>
+
+    </div>
+ 
+ 
+  </div>
+  </form>
+</div>
+
+
+     <!-- Modal -->
+     <!-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+     <div class="modal-dialog modal-dialog-centered" role="document" style="width: 30%;">
+       <div class="modal-content">
+         <div class="modal-header">
+           <h5 class="modal-title" id="exampleModalLongTitle" style="padding-top: 1%;color:black;">
+             Attached Document</h5>
+         </div>
+         <div class="modal-body">
+           <form action="">
+             <div class="form-group">
+               <label for="exampleInputEmail1">Document Type</label>
+
+               <select class="form-control" formControlName="document_type">
+                 <option value="Collection weight Slip">Collection weight Slip</option>
+                 <option value="Disposal weight Slip">Disposal weight Slip</option>
+
+
+               </select>
+
+             </div>
+             <div class="form-group">
+               <label for="exampleInputPassword1">Document No</label>
+               <input type="text" class="form-control" placeholder="Enter Document No"
+                 formControlName="document_no">
+             </div>
+
+             <div class="form-group">
+               <label for="exampleInputPassword1">File Name</label>
+               <input type="file" class="form-control" formControlName="file">
+             </div>
+
+
+           </form>
+
+         </div>
+         <div class="modal-footer">
+
+           <button type="cancel" class=" bt light upbt" data-dismiss="modal">Cancel</button>
+           <button type="submit" class=" bt danger upbt">Save</button>
+         </div>
+       </div>
+     </div>
+   </div> -->
+   <!-- mode end -->
+   <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document" style="width: 30%;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle" style="padding-top: 1%;color:black;">
+          Attached Document:</h5>
+
+      </div>
+      <form [formGroup]="disposalexecutionformModal" (ngSubmit)="onModalFormSubmit()">
+        <div class="modal-body">
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Document Type</label>
+
+            <select class="form-control" formControlName="document_type">
+              <option value="Collection weight Slip">Collection weight Slip</option>
+                 <option value="Disposal weight Slip">Disposal weight Slip</option>
+            </select>
+            <div *ngIf="fm.document_type.errors && fm.document_type.errors.required && isValidFormSubmittedModal"
+              class="text-danger text-left mb-1 errorcontrols">
+              <div *ngIf="fm.document_type.errors.required"><small>document type is required.</small></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Document No</label>
+            <input type="text" class="form-control" placeholder="Enter Document No" formControlName="document_no">
+            <div *ngIf="fm.document_no.errors && fm.document_no.errors.required && isValidFormSubmittedModal"
+              class="text-danger text-left mb-1 errorcontrols">
+              <div *ngIf="fm.document_no.errors.required"><small>document no is required.</small></div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputPassword1">File Name</label>
+            <input type="file" class="form-control" formControlName="image" (change)="fileupload($event)">
+            <div *ngIf="fm.image.errors && fm.image.errors.required && isValidFormSubmittedModal"
+              class="text-danger text-left mb-1 errorcontrols">
+              <div *ngIf="fm.image.errors.required"><small>file is required.</small></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Validity</label>
+            <input type="date" class="form-control" formControlName="validity">
+            <div *ngIf="fm.validity.errors && fm.validity.errors.required && isValidFormSubmittedModal"
+              class="text-danger text-left mb-1 errorcontrols">
+              <div *ngIf="fm.validity.errors.required"><small>validity is required.</small></div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="cancel" class=" bt light upbt" data-dismiss="modal" #closebutton>Cancel</button>
+          <button type="submit" class=" bt danger upbt" [disabled]="isValidbuttonModal">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
